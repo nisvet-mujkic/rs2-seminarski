@@ -1,7 +1,9 @@
 ﻿using BookDiary.Core.Interfaces;
 using BookDiary.Core.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -9,49 +11,44 @@ namespace BookDiary.Infrastructure.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class, IBaseEntity
     {
+        internal RepositoryContext RepositoryContext { get; private set; }
+        public Repository(RepositoryContext repositoryContext)
+        {
+            RepositoryContext = repositoryContext;
+        }
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            RepositoryContext.Set<T>().Add(entity); 
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            RepositoryContext.Set<T>().Remove(entity);
         }
 
-        public Task<T> FirstOrDefault(int id)
+        public async Task<T> FirstOrDefaultAsync(int id)
         {
-            throw new NotImplementedException();
+            return await RepositoryContext.Set<T>().FindAsync(id);
         }
 
-        public Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await RepositoryContext.Set<T>().ToListAsync();
         }
 
-        public Task<T> GetById(int id)
+        public async Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await RepositoryContext.Set<T>().Where(predicate).ToListAsync();
         }
 
-        public Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate)
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveChangesAsync()
-        {
-            throw new NotImplementedException();
+            await RepositoryContext.SaveChangesAsync();
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Update(int id)
-        {
-            throw new NotImplementedException();
+            RepositoryContext.Set<T>().Update(entity);
         }
     }
 }

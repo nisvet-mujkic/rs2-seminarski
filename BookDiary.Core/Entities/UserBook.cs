@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookDiary.Core.Entities
 {
-    public class Activity: BaseEntity
+    public class UserBook: BaseEntity
     {
         [Required]
         [ForeignKey(nameof(User))]

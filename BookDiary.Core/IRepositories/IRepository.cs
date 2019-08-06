@@ -8,13 +8,11 @@ namespace BookDiary.Core.IRepositories
 {
     public interface IRepository<T> where T: IBaseEntity
     {
-        Task<T> GetById(int id);
         Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate);
-        Task<T> FirstOrDefault(int id);
+        Task<T> FirstOrDefaultAsync(int id);
         void Add(T entity);
         void Update(T entity);
-        void Update(int id);
         void Delete(T entity);
         Task SaveChangesAsync();
     }
