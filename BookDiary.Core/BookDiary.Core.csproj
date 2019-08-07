@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Folder Include="Requests\Books\" />
+    <Folder Include="Requests\Quotes\" />
+    <Folder Include="Requests\Users\" />
   </ItemGroup>
 
 </Project>

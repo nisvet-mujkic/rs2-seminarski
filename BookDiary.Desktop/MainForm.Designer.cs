@@ -31,10 +31,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.booksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.booksManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quotesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewsManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mostActiveUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.genreComparisonReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,6 +48,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usersToolStripMenuItem,
+            this.booksToolStripMenuItem,
             this.reviewsToolStripMenuItem,
             this.reportsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -62,8 +68,29 @@
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.userManagementToolStripMenuItem.Text = "User Management";
+            // 
+            // booksToolStripMenuItem
+            // 
+            this.booksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.booksManagementToolStripMenuItem,
+            this.quotesManagementToolStripMenuItem});
+            this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.booksToolStripMenuItem.Text = "Books";
+            // 
+            // booksManagementToolStripMenuItem
+            // 
+            this.booksManagementToolStripMenuItem.Name = "booksManagementToolStripMenuItem";
+            this.booksManagementToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.booksManagementToolStripMenuItem.Text = "Books Management";
+            // 
+            // quotesManagementToolStripMenuItem
+            // 
+            this.quotesManagementToolStripMenuItem.Name = "quotesManagementToolStripMenuItem";
+            this.quotesManagementToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.quotesManagementToolStripMenuItem.Text = "Quotes Management";
             // 
             // reviewsToolStripMenuItem
             // 
@@ -82,7 +109,9 @@
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reportsManagementToolStripMenuItem});
+            this.reportsManagementToolStripMenuItem,
+            this.mostActiveUsersToolStripMenuItem,
+            this.genreComparisonReportToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.reportsToolStripMenuItem.Text = "Reports";
@@ -90,8 +119,20 @@
             // reportsManagementToolStripMenuItem
             // 
             this.reportsManagementToolStripMenuItem.Name = "reportsManagementToolStripMenuItem";
-            this.reportsManagementToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
-            this.reportsManagementToolStripMenuItem.Text = "Reports Management";
+            this.reportsManagementToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
+            this.reportsManagementToolStripMenuItem.Text = "Most Popular Books";
+            // 
+            // mostActiveUsersToolStripMenuItem
+            // 
+            this.mostActiveUsersToolStripMenuItem.Name = "mostActiveUsersToolStripMenuItem";
+            this.mostActiveUsersToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
+            this.mostActiveUsersToolStripMenuItem.Text = "Most Active Users";
+            // 
+            // genreComparisonReportToolStripMenuItem
+            // 
+            this.genreComparisonReportToolStripMenuItem.Name = "genreComparisonReportToolStripMenuItem";
+            this.genreComparisonReportToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
+            this.genreComparisonReportToolStripMenuItem.Text = "Genre Comparison Report";
             // 
             // MainForm
             // 
@@ -118,5 +159,10 @@
         private System.Windows.Forms.ToolStripMenuItem reviewsManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem booksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem booksManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quotesManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mostActiveUsersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem genreComparisonReportToolStripMenuItem;
     }
 }

@@ -8,6 +8,10 @@ namespace BookDiary.Core.Entities
         [Required]
         public string Name { get; set; }
         [Required]
+        [ForeignKey(nameof(Author))]
+        public int AuthorId { get; set; }
+        public Author Author { get; set; }
+        [Required]
         [ForeignKey(nameof(Genre))]
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
