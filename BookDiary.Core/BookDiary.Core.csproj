@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Requests\Books\" />
-    <Folder Include="Requests\Quotes\" />
-    <Folder Include="Requests\Users\" />
+    <Compile Remove="Interfaces\**" />
+    <Compile Remove="IRepositories\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
+    <EmbeddedResource Remove="IRepositories\**" />
+    <None Remove="Interfaces\**" />
+    <None Remove="IRepositories\**" />
   </ItemGroup>
 
 </Project>
