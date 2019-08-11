@@ -1,11 +1,19 @@
-﻿using BookDiary.Infrastructure;
+﻿using AutoMapper;
+using BookDiary.API.Filters;
+using BookDiary.API.IService;
+using BookDiary.API.Service;
 using BookDiary.Infrastructure.Data;
+using BookDiary.Model;
+using BookDiary.Model.Requests.Books;
+using BookDiary.Model.Requests.Quotes;
+using BookDiary.Model.Requests.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace BookDiary.API
 {
@@ -21,10 +29,20 @@ namespace BookDiary.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddAutoMapper();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "BookDiary API", Version = "v1" });
+            });
+
+            services.AddScoped<IService<Model.Models.Genre, object>, Service<Model.Models.Genre, object, Infrastructure.Entities.Genre>>();
+            services.AddScoped<ICrudService<Model.Models.Quote, QuotesSearchRequest, QuotesUpsertRequest, QuotesUpsertRequest>, QuotesService>();
+            services.AddScoped<ICrudService<Model.Models.Book, BooksSearchRequest, BooksUpsertRequest, BooksUpsertRequest>, BooksService>();
+            services.AddScoped<ICrudService<Model.Models.User, UsersSearchRequest, UsersUpsertRequest, UsersUpsertRequest>, UsersService>();
 
             string connectionString = Configuration.GetConnectionString(Global.ConnectionStrings.BookDiaryLocal);
-            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<BookDiaryContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +59,17 @@ namespace BookDiary.API
             }
 
             app.UseHttpsRedirection();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookDiary API V1");
+            });
+
             app.UseMvc();
         }
     }

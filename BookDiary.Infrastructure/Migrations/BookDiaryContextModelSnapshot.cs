@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookDiary.Infrastructure.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(BookDiaryContext))]
+    partial class BookDiaryContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace BookDiary.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Author", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,9 +29,6 @@ namespace BookDiary.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("Email")
-                        .IsRequired();
-
                     b.Property<string>("Name")
                         .IsRequired();
 
@@ -40,7 +37,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Book", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +69,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Genre", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Genre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +87,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("Genres");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Quote", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Quote", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,7 +109,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.ReadingActivity", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.ReadingActivity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,7 +130,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("ReadingActivities");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Review", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Review", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -164,7 +161,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Role", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,7 +178,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.User", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,10 +188,19 @@ namespace BookDiary.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<string>("Email");
+
                     b.Property<string>("FirstName")
                         .IsRequired();
 
                     b.Property<string>("LastName")
+                        .IsRequired();
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PasswordSalt");
+
+                    b.Property<string>("Username")
                         .IsRequired();
 
                     b.HasKey("Id");
@@ -202,7 +208,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.UserBook", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.UserBook", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -229,7 +235,7 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("UserBooks");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.UserRole", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.UserRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -252,68 +258,68 @@ namespace BookDiary.Infrastructure.Migrations
                     b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Book", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Book", b =>
                 {
-                    b.HasOne("BookDiary.Core.Entities.Author", "Author")
+                    b.HasOne("BookDiary.Infrastructure.Entities.Author", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookDiary.Core.Entities.Genre", "Genre")
+                    b.HasOne("BookDiary.Infrastructure.Entities.Genre", "Genre")
                         .WithMany()
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Quote", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Quote", b =>
                 {
-                    b.HasOne("BookDiary.Core.Entities.Book", "Book")
+                    b.HasOne("BookDiary.Infrastructure.Entities.Book", "Book")
                         .WithMany()
                         .HasForeignKey("BookId");
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.ReadingActivity", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.ReadingActivity", b =>
                 {
-                    b.HasOne("BookDiary.Core.Entities.UserBook", "UserBook")
+                    b.HasOne("BookDiary.Infrastructure.Entities.UserBook", "UserBook")
                         .WithMany()
                         .HasForeignKey("UserBookId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.Review", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.Review", b =>
                 {
-                    b.HasOne("BookDiary.Core.Entities.Book", "Book")
+                    b.HasOne("BookDiary.Infrastructure.Entities.Book", "Book")
                         .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookDiary.Core.Entities.User", "User")
+                    b.HasOne("BookDiary.Infrastructure.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.UserBook", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.UserBook", b =>
                 {
-                    b.HasOne("BookDiary.Core.Entities.Book", "Book")
+                    b.HasOne("BookDiary.Infrastructure.Entities.Book", "Book")
                         .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookDiary.Core.Entities.User", "User")
+                    b.HasOne("BookDiary.Infrastructure.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BookDiary.Core.Entities.UserRole", b =>
+            modelBuilder.Entity("BookDiary.Infrastructure.Entities.UserRole", b =>
                 {
-                    b.HasOne("BookDiary.Core.Entities.Role", "Role")
+                    b.HasOne("BookDiary.Infrastructure.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookDiary.Core.Entities.User", "User")
+                    b.HasOne("BookDiary.Infrastructure.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
