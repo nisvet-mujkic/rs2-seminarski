@@ -22,6 +22,9 @@ namespace BookDiary.API.Service
             if (search?.BookId.HasValue == true)
                 query = query.Where(x => x.BookId == search.BookId);
 
+            if (search?.IsBooksLoadingEnabled == true)
+                query = query.Include(x => x.Book);
+
             query = query.OrderBy(x => x.QuoteText);
 
             var entities = await query.ToListAsync();

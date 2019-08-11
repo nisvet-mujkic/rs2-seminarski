@@ -13,13 +13,14 @@ namespace BookDiary.API.Helpers.Controllers
         }
 
         [HttpPost]
-        public async Task<T> Insert(TInsert request)
+        public async Task<ActionResult<T>> Insert(TInsert request)
         {
-            return await _service.Insert(request);
+            var response = await _service.Insert(request);
+            return response;
         }
 
         [HttpPut("{id}")]
-        public async Task<T> Update(int id, [FromBody]TUpdate request)
+        public async Task<ActionResult<T>> Update(int id, [FromBody]TUpdate request)
         {
             return await _service.Update(id, request);
         }

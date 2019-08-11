@@ -28,89 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.quoteIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quoteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromBookColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.showColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.quotesDataGrid = new System.Windows.Forms.DataGridView();
+            this.openQuoteFormBtn = new System.Windows.Forms.Button();
+            this.showQuotesBtn = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idOfTheBook = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuoteText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Archived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // quotesDataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.quoteIdColumn,
-            this.quoteColumn,
-            this.fromBookColumn,
-            this.showColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 96);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(609, 339);
-            this.dataGridView1.TabIndex = 0;
+            this.quotesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.quotesDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.idOfTheBook,
+            this.QuoteText,
+            this.BookId,
+            this.Archived});
+            this.quotesDataGrid.Location = new System.Drawing.Point(30, 96);
+            this.quotesDataGrid.Name = "quotesDataGrid";
+            this.quotesDataGrid.RowHeadersWidth = 51;
+            this.quotesDataGrid.RowTemplate.Height = 24;
+            this.quotesDataGrid.Size = new System.Drawing.Size(609, 339);
+            this.quotesDataGrid.TabIndex = 0;
+            this.quotesDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.QuotesDataGrid_CellDoubleClick);
             // 
-            // button1
+            // openQuoteFormBtn
             // 
-            this.button1.Location = new System.Drawing.Point(30, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 35);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add quote";
-            this.button1.UseVisualStyleBackColor = true;
+            this.openQuoteFormBtn.Location = new System.Drawing.Point(527, 32);
+            this.openQuoteFormBtn.Name = "openQuoteFormBtn";
+            this.openQuoteFormBtn.Size = new System.Drawing.Size(112, 35);
+            this.openQuoteFormBtn.TabIndex = 1;
+            this.openQuoteFormBtn.Text = "Add Quote";
+            this.openQuoteFormBtn.UseVisualStyleBackColor = true;
+            this.openQuoteFormBtn.Click += new System.EventHandler(this.OpenQuoteFormBtn_Click);
             // 
-            // quoteIdColumn
+            // showQuotesBtn
             // 
-            this.quoteIdColumn.HeaderText = "QuoteId";
-            this.quoteIdColumn.MinimumWidth = 6;
-            this.quoteIdColumn.Name = "quoteIdColumn";
-            this.quoteIdColumn.Visible = false;
-            this.quoteIdColumn.Width = 125;
+            this.showQuotesBtn.Location = new System.Drawing.Point(30, 32);
+            this.showQuotesBtn.Name = "showQuotesBtn";
+            this.showQuotesBtn.Size = new System.Drawing.Size(112, 35);
+            this.showQuotesBtn.TabIndex = 2;
+            this.showQuotesBtn.Text = "Show Quotes";
+            this.showQuotesBtn.UseVisualStyleBackColor = true;
+            this.showQuotesBtn.Click += new System.EventHandler(this.ShowQuotesBtn_Click);
             // 
-            // quoteColumn
+            // Id
             // 
-            this.quoteColumn.HeaderText = "Quote";
-            this.quoteColumn.MinimumWidth = 6;
-            this.quoteColumn.Name = "quoteColumn";
-            this.quoteColumn.Width = 125;
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "QuoteId";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            this.Id.Width = 125;
             // 
-            // fromBookColumn
+            // idOfTheBook
             // 
-            this.fromBookColumn.HeaderText = "Book";
-            this.fromBookColumn.MinimumWidth = 6;
-            this.fromBookColumn.Name = "fromBookColumn";
-            this.fromBookColumn.Width = 125;
+            this.idOfTheBook.DataPropertyName = "BookId";
+            this.idOfTheBook.HeaderText = "BookId";
+            this.idOfTheBook.MinimumWidth = 6;
+            this.idOfTheBook.Name = "idOfTheBook";
+            this.idOfTheBook.Width = 125;
             // 
-            // showColumn
+            // QuoteText
             // 
-            this.showColumn.HeaderText = "Show Quote";
-            this.showColumn.MinimumWidth = 6;
-            this.showColumn.Name = "showColumn";
-            this.showColumn.Width = 125;
+            this.QuoteText.DataPropertyName = "QuoteText";
+            this.QuoteText.HeaderText = "Quote";
+            this.QuoteText.MinimumWidth = 6;
+            this.QuoteText.Name = "QuoteText";
+            this.QuoteText.Width = 125;
+            // 
+            // BookId
+            // 
+            this.BookId.DataPropertyName = "Book";
+            this.BookId.HeaderText = "Book";
+            this.BookId.MinimumWidth = 6;
+            this.BookId.Name = "BookId";
+            this.BookId.ReadOnly = true;
+            this.BookId.Width = 125;
+            // 
+            // Archived
+            // 
+            this.Archived.DataPropertyName = "Archived";
+            this.Archived.HeaderText = "Archived";
+            this.Archived.MinimumWidth = 6;
+            this.Archived.Name = "Archived";
+            this.Archived.Width = 125;
             // 
             // QuotesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.showQuotesBtn);
+            this.Controls.Add(this.openQuoteFormBtn);
+            this.Controls.Add(this.quotesDataGrid);
             this.Name = "QuotesForm";
             this.Text = "QuotesForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.QuotesForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.quotesDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quoteIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quoteColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fromBookColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn showColumn;
+        private System.Windows.Forms.DataGridView quotesDataGrid;
+        private System.Windows.Forms.Button openQuoteFormBtn;
+        private System.Windows.Forms.Button showQuotesBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idOfTheBook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuoteText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookId;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Archived;
     }
 }

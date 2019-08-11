@@ -18,5 +18,10 @@ namespace BookDiary.Model.Models
         public int PagesInTotal { get; set; }
         public int YearPublished { get; set; }
         public byte[] CoverImage { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
