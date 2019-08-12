@@ -1,6 +1,7 @@
 ﻿using BookDiary.Model.Requests.Users;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookDiary.Desktop.Users
@@ -13,9 +14,9 @@ namespace BookDiary.Desktop.Users
             InitializeComponent();
         }
 
-        private void UsersForm_Load(object sender, EventArgs e)
+        private async void UsersForm_Load(object sender, EventArgs e)
         {
-
+            await LoadUsers();
         }
 
         private async void SearchBtn_Click(object sender, EventArgs e)
@@ -26,15 +27,20 @@ namespace BookDiary.Desktop.Users
                 ShowDisabledUsers = disabledUsersCheckBox.Checked
             };
 
-            var userEntities = await _usersService.Get<List<Model.Models.User>>(searchRequest);
-            allUsersDataGrid.AutoGenerateColumns = false;
-            allUsersDataGrid.DataSource = userEntities;
+            await LoadUsers(searchRequest);
         }
 
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
             var userDetailsForm = new UserDetailsForm();
             userDetailsForm.Show();
+        }
+
+        private async Task LoadUsers(UsersSearchRequest request = null)
+        {
+            var userEntities = await _usersService.Get<List<Model.Models.User>>(request);
+            allUsersDataGrid.AutoGenerateColumns = false;
+            allUsersDataGrid.DataSource = userEntities;
         }
     }
 }

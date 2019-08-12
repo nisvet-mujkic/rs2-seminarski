@@ -4,8 +4,10 @@ using BookDiary.API.IService;
 using BookDiary.API.Service;
 using BookDiary.Infrastructure.Data;
 using BookDiary.Model;
+using BookDiary.Model.Requests.Authors;
 using BookDiary.Model.Requests.Books;
 using BookDiary.Model.Requests.Quotes;
+using BookDiary.Model.Requests.Reviews;
 using BookDiary.Model.Requests.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,10 +38,14 @@ namespace BookDiary.API
                 c.SwaggerDoc("v1", new Info { Title = "BookDiary API", Version = "v1" });
             });
 
+            services.AddScoped<IService<Model.Models.Role, object>, Service<Model.Models.Role, object, Infrastructure.Entities.Role>>();
+
             services.AddScoped<IService<Model.Models.Genre, object>, Service<Model.Models.Genre, object, Infrastructure.Entities.Genre>>();
             services.AddScoped<ICrudService<Model.Models.Quote, QuotesSearchRequest, QuotesUpsertRequest, QuotesUpsertRequest>, QuotesService>();
             services.AddScoped<ICrudService<Model.Models.Book, BooksSearchRequest, BooksUpsertRequest, BooksUpsertRequest>, BooksService>();
             services.AddScoped<ICrudService<Model.Models.User, UsersSearchRequest, UsersUpsertRequest, UsersUpsertRequest>, UsersService>();
+            services.AddScoped<ICrudService<Model.Models.Review, ReviewsSearchRequest, ReviewsUpsertRequest, ReviewsUpsertRequest>, ReviewsService>();
+            services.AddScoped<ICrudService<Model.Models.Author, AuthorsSearchRequest, AuthorsUpsertRequest, AuthorsUpsertRequest>, AuthorsService>();
 
             string connectionString = Configuration.GetConnectionString(Global.ConnectionStrings.BookDiaryLocal);
             services.AddDbContext<BookDiaryContext>(options => options.UseSqlServer(connectionString));

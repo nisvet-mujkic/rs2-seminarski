@@ -104,6 +104,12 @@
     <Compile Include="Reports\ReportsForm.Designer.cs">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reviews\ReviewDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reviews\ReviewDetailsForm.Designer.cs">
+      <DependentUpon>ReviewDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reviews\ReviewsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="Users\UsersForm.Designer.cs">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Books\BookDetailsForm.resx">
+      <DependentUpon>BookDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Books\BooksForm.resx">
       <DependentUpon>BooksForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,8 +156,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reviews\ReviewDetailsForm.resx">
+      <DependentUpon>ReviewDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reviews\ReviewsForm.resx">
       <DependentUpon>ReviewsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserDetailsForm.resx">
+      <DependentUpon>UserDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>

@@ -2,5 +2,6 @@
 {
     public class BooksUpsertRequest
     {
+        public byte[] Picture { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookDiary.Desktop.Books;
+using BookDiary.Desktop.Reviews;
 using BookDiary.Desktop.Users;
 using System;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace BookDiary.Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuotesForm());
+            Application.Run(new UsersForm());
         }
     }
 }
