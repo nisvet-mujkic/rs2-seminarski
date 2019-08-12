@@ -11,6 +11,7 @@ namespace BookDiary.Desktop.Reviews
         public ReviewsForm()
         {
             InitializeComponent();
+            fromDatePicker.Value = fromDatePicker.Value.AddYears(-1);
         }
 
         private async void ShowReviewsButton_Click(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace BookDiary.Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReviewsForm());
+            Application.Run(new UsersForm());
         }
     }
 }
