@@ -16,6 +16,6 @@ namespace BookDiary.Infrastructure.Entities
         public Book Book { get; set; }
         public string Summary { get; set; }
         public string QuoteToRemember { get; set; }
-        public bool Approved { get; set; }
+        public bool? Approved { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using BookDiary.Infrastructure.Data;
 using BookDiary.Model;
 using BookDiary.Model.Requests.Books;
 using BookDiary.Model.Requests.Quotes;
+using BookDiary.Model.Requests.Reviews;
 using BookDiary.Model.Requests.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +41,7 @@ namespace BookDiary.API
             services.AddScoped<ICrudService<Model.Models.Quote, QuotesSearchRequest, QuotesUpsertRequest, QuotesUpsertRequest>, QuotesService>();
             services.AddScoped<ICrudService<Model.Models.Book, BooksSearchRequest, BooksUpsertRequest, BooksUpsertRequest>, BooksService>();
             services.AddScoped<ICrudService<Model.Models.User, UsersSearchRequest, UsersUpsertRequest, UsersUpsertRequest>, UsersService>();
+            services.AddScoped<ICrudService<Model.Models.Review, ReviewsSearchRequest, ReviewsUpsertRequest, ReviewsUpsertRequest>, ReviewsService>();
 
             string connectionString = Configuration.GetConnectionString(Global.ConnectionStrings.BookDiaryLocal);
             services.AddDbContext<BookDiaryContext>(options => options.UseSqlServer(connectionString));

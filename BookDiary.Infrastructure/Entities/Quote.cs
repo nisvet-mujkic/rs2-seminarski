@@ -8,7 +8,7 @@ namespace BookDiary.Infrastructure.Entities
         [Required]
         public string QuoteText { get; set; }
         [ForeignKey(nameof(Book))]
-        public int? BookId { get; set; }
+        public int BookId { get; set; }
         public Book Book { get; set; }
     }
 }

@@ -13,5 +13,9 @@ namespace BookDiary.Model.Models
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }
