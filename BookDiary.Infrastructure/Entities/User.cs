@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookDiary.Infrastructure.Entities
 {
@@ -13,6 +14,6 @@ namespace BookDiary.Infrastructure.Entities
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
-
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

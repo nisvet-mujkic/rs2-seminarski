@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.bookTitleTextBox = new System.Windows.Forms.TextBox();
             this.bookPictureBox = new System.Windows.Forms.PictureBox();
@@ -35,9 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bookAuthorComboBox = new System.Windows.Forms.ComboBox();
             this.bookGenreComboBox = new System.Windows.Forms.ComboBox();
-            this.totalPagesTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.yearPublishedTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.archivedCheckBox = new System.Windows.Forms.CheckBox();
             this.addPictureBtn = new System.Windows.Forms.Button();
@@ -45,7 +44,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.finishBookBtn = new System.Windows.Forms.Button();
             this.selectPictureDialog = new System.Windows.Forms.OpenFileDialog();
+            this.bookDetailsErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.totalPagesNumeric = new System.Windows.Forms.NumericUpDown();
+            this.publishedInNumeric = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.bookPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDetailsErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.totalPagesNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.publishedInNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,6 +68,7 @@
             this.bookTitleTextBox.Name = "bookTitleTextBox";
             this.bookTitleTextBox.Size = new System.Drawing.Size(228, 22);
             this.bookTitleTextBox.TabIndex = 1;
+            this.bookTitleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.BookTitleTextBox_Validating);
             // 
             // bookPictureBox
             // 
@@ -106,13 +112,6 @@
             this.bookGenreComboBox.Size = new System.Drawing.Size(228, 24);
             this.bookGenreComboBox.TabIndex = 6;
             // 
-            // totalPagesTextBox
-            // 
-            this.totalPagesTextBox.Location = new System.Drawing.Point(37, 341);
-            this.totalPagesTextBox.Name = "totalPagesTextBox";
-            this.totalPagesTextBox.Size = new System.Drawing.Size(100, 22);
-            this.totalPagesTextBox.TabIndex = 7;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -121,13 +120,6 @@
             this.label4.Size = new System.Drawing.Size(84, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Total Pages";
-            // 
-            // yearPublishedTextBox
-            // 
-            this.yearPublishedTextBox.Location = new System.Drawing.Point(165, 341);
-            this.yearPublishedTextBox.Name = "yearPublishedTextBox";
-            this.yearPublishedTextBox.Size = new System.Drawing.Size(100, 22);
-            this.yearPublishedTextBox.TabIndex = 9;
             // 
             // label5
             // 
@@ -182,25 +174,74 @@
             this.finishBookBtn.TabIndex = 15;
             this.finishBookBtn.Text = "Finish";
             this.finishBookBtn.UseVisualStyleBackColor = true;
+            this.finishBookBtn.Click += new System.EventHandler(this.FinishBookBtn_Click);
             // 
             // selectPictureDialog
             // 
             this.selectPictureDialog.FileName = "openFileDialog1";
+            // 
+            // bookDetailsErrorProvider
+            // 
+            this.bookDetailsErrorProvider.ContainerControl = this;
+            // 
+            // totalPagesNumeric
+            // 
+            this.totalPagesNumeric.Location = new System.Drawing.Point(39, 342);
+            this.totalPagesNumeric.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.totalPagesNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.totalPagesNumeric.Name = "totalPagesNumeric";
+            this.totalPagesNumeric.Size = new System.Drawing.Size(102, 22);
+            this.totalPagesNumeric.TabIndex = 16;
+            this.totalPagesNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // publishedInNumeric
+            // 
+            this.publishedInNumeric.Location = new System.Drawing.Point(165, 341);
+            this.publishedInNumeric.Maximum = new decimal(new int[] {
+            2050,
+            0,
+            0,
+            0});
+            this.publishedInNumeric.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.publishedInNumeric.Name = "publishedInNumeric";
+            this.publishedInNumeric.Size = new System.Drawing.Size(100, 22);
+            this.publishedInNumeric.TabIndex = 17;
+            this.publishedInNumeric.Value = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
             // 
             // BookDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 478);
+            this.Controls.Add(this.publishedInNumeric);
+            this.Controls.Add(this.totalPagesNumeric);
             this.Controls.Add(this.finishBookBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureTextBox);
             this.Controls.Add(this.addPictureBtn);
             this.Controls.Add(this.archivedCheckBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.yearPublishedTextBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.totalPagesTextBox);
             this.Controls.Add(this.bookGenreComboBox);
             this.Controls.Add(this.bookAuthorComboBox);
             this.Controls.Add(this.label3);
@@ -212,6 +253,9 @@
             this.Text = "BookDetailsForm";
             this.Load += new System.EventHandler(this.BookDetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bookPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDetailsErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.totalPagesNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.publishedInNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,9 +270,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox bookAuthorComboBox;
         private System.Windows.Forms.ComboBox bookGenreComboBox;
-        private System.Windows.Forms.TextBox totalPagesTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox yearPublishedTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox archivedCheckBox;
         private System.Windows.Forms.Button addPictureBtn;
@@ -236,5 +278,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button finishBookBtn;
         private System.Windows.Forms.OpenFileDialog selectPictureDialog;
+        private System.Windows.Forms.ErrorProvider bookDetailsErrorProvider;
+        private System.Windows.Forms.NumericUpDown publishedInNumeric;
+        private System.Windows.Forms.NumericUpDown totalPagesNumeric;
     }
 }

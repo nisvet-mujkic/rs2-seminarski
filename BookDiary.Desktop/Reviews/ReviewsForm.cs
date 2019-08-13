@@ -1,6 +1,7 @@
 ﻿using BookDiary.Model.Requests.Reviews;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookDiary.Desktop.Reviews
@@ -26,15 +27,7 @@ namespace BookDiary.Desktop.Reviews
                 IsBooksLoadingEnabled = true,
                 IsUsersLoadingEnabled = true
             };
-
-            var reviews = await _reviews.Get<List<Model.Models.Review>>(searchRequest);
-            reviewsDataGrid.AutoGenerateColumns = false;
-            reviewsDataGrid.DataSource = reviews;
-        }
-
-        private void ReviewsDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            await LoadReviews(searchRequest);
         }
 
         private void ReviewsDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -43,6 +36,13 @@ namespace BookDiary.Desktop.Reviews
 
             var reviewDetailsForm = new ReviewDetailsForm(reviewId);
             reviewDetailsForm.Show();
+        }
+
+        private async Task LoadReviews(ReviewsSearchRequest searchRequest = null)
+        {
+            var reviews = await _reviews.Get<List<Model.Models.Review>>(searchRequest);
+            reviewsDataGrid.AutoGenerateColumns = false;
+            reviewsDataGrid.DataSource = reviews;
         }
     }
 }

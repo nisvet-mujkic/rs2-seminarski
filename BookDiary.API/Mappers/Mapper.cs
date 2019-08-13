@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using BookDiary.Model.Requests.Books;
 using BookDiary.Model.Requests.Quotes;
 using BookDiary.Model.Requests.Reviews;
+using BookDiary.Model.Requests.Users;
 
 namespace BookDiary.API.Mappers
 {
@@ -17,6 +19,9 @@ namespace BookDiary.API.Mappers
             CreateMap<Infrastructure.Entities.Review, ReviewsUpsertRequest>().ReverseMap();
             CreateMap<Infrastructure.Entities.Author, Model.Models.Author>();
             CreateMap<Infrastructure.Entities.Role, Model.Models.Role>();
+            CreateMap<Infrastructure.Entities.Book, BooksUpsertRequest>().ReverseMap();
+            CreateMap<Infrastructure.Entities.User, UsersUpsertRequest>().ReverseMap();
+            CreateMap<Infrastructure.Entities.UserRole, Model.Models.UserRole>();
         }
     }
 }

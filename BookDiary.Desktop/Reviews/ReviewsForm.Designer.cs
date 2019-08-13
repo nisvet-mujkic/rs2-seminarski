@@ -64,7 +64,6 @@
             this.reviewsDataGrid.RowTemplate.Height = 24;
             this.reviewsDataGrid.Size = new System.Drawing.Size(1091, 413);
             this.reviewsDataGrid.TabIndex = 0;
-            this.reviewsDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReviewsDataGrid_CellContentClick);
             this.reviewsDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReviewsDataGrid_CellDoubleClick);
             // 
             // IdColumn

@@ -2,6 +2,11 @@
 {
     public class BooksUpsertRequest
     {
-        public byte[] Picture { get; set; }
+        public string Name { get; set; }
+        public int AuthorId { get; set; }
+        public int GenreId { get; set; }
+        public byte[] CoverImage { get; set; }
+        public int PagesInTotal { get; set; }
+        public int YearPublished { get; set; }
     }
 }
