@@ -42,5 +42,13 @@ namespace BookDiary.Desktop.Users
             allUsersDataGrid.AutoGenerateColumns = false;
             allUsersDataGrid.DataSource = userEntities;
         }
+
+        private void AllUsersDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var userId = int.Parse(allUsersDataGrid.SelectedRows[0].Cells[0].Value.ToString());
+
+            var userDetailsForm = new UserDetailsForm(userId);
+            userDetailsForm.Show();
+        }
     }
 }

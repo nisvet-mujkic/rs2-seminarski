@@ -42,7 +42,6 @@ namespace BookDiary.Desktop.Books
         private async Task LoadBooks()
         {
             var books = await _booksService.Get<List<Model.Models.Book>>(null);
-            books.Insert(0, new Model.Models.Book());
             booksComboBox.DisplayMember = "Name";
             booksComboBox.ValueMember = "Id";
             booksComboBox.DataSource = books;

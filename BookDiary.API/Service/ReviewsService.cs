@@ -35,7 +35,8 @@ namespace BookDiary.API.Service
             if (search.ShowPendingReviews)
                 query = query.Where(x => x.Approved == null);
 
-            query = query.Where(x => x.CreatedAt > search.From && x.CreatedAt < search.To);
+            if(search.From != DateTime.MinValue && search.To != DateTime.MinValue)
+                query = query.Where(x => x.CreatedAt > search.From && x.CreatedAt < search.To);
 
             query = query.OrderByDescending(x => x.CreatedAt);
 

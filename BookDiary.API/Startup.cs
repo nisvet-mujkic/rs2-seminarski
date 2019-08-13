@@ -8,6 +8,7 @@ using BookDiary.Model.Requests.Authors;
 using BookDiary.Model.Requests.Books;
 using BookDiary.Model.Requests.Quotes;
 using BookDiary.Model.Requests.Reviews;
+using BookDiary.Model.Requests.UserRoles;
 using BookDiary.Model.Requests.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace BookDiary.API
             });
 
             services.AddScoped<IService<Model.Models.Role, object>, Service<Model.Models.Role, object, Infrastructure.Entities.Role>>();
+            _ = services.AddScoped<IService<Model.Models.UserRole, UserRolesSearchRequest>, Service<Model.Models.UserRole, UserRolesSearchRequest, Infrastructure.Entities.UserRole>>();
 
             services.AddScoped<IService<Model.Models.Genre, object>, Service<Model.Models.Genre, object, Infrastructure.Entities.Genre>>();
             services.AddScoped<ICrudService<Model.Models.Quote, QuotesSearchRequest, QuotesUpsertRequest, QuotesUpsertRequest>, QuotesService>();

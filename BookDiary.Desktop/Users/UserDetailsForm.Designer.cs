@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
@@ -42,6 +43,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.userDisabledCheckBox = new System.Windows.Forms.CheckBox();
             this.rolesCheckBoxList = new System.Windows.Forms.CheckedListBox();
+            this.userDetailsErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.addUserBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.userDetailsErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +64,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(163, 22);
             this.firstNameTextBox.TabIndex = 1;
+            this.firstNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.FirstNameTextBox_Validating);
             // 
             // lastNameTextBox
             // 
@@ -66,6 +72,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(163, 22);
             this.lastNameTextBox.TabIndex = 3;
+            this.lastNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.LastNameTextBox_Validating);
             // 
             // label2
             // 
@@ -89,6 +96,7 @@
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(349, 22);
             this.usernameTextBox.TabIndex = 5;
+            this.usernameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.UsernameTextBox_Validating);
             // 
             // label3
             // 
@@ -145,26 +153,51 @@
             // userDisabledCheckBox
             // 
             this.userDisabledCheckBox.AutoSize = true;
-            this.userDisabledCheckBox.Location = new System.Drawing.Point(30, 343);
+            this.userDisabledCheckBox.Location = new System.Drawing.Point(30, 462);
             this.userDisabledCheckBox.Name = "userDisabledCheckBox";
-            this.userDisabledCheckBox.Size = new System.Drawing.Size(93, 21);
+            this.userDisabledCheckBox.Size = new System.Drawing.Size(143, 21);
             this.userDisabledCheckBox.TabIndex = 12;
-            this.userDisabledCheckBox.Text = "Disabled?";
+            this.userDisabledCheckBox.Text = "Disable this user?";
             this.userDisabledCheckBox.UseVisualStyleBackColor = true;
             // 
             // rolesCheckBoxList
             // 
             this.rolesCheckBoxList.FormattingEnabled = true;
-            this.rolesCheckBoxList.Location = new System.Drawing.Point(30, 389);
+            this.rolesCheckBoxList.Location = new System.Drawing.Point(30, 367);
             this.rolesCheckBoxList.Name = "rolesCheckBoxList";
-            this.rolesCheckBoxList.Size = new System.Drawing.Size(120, 89);
+            this.rolesCheckBoxList.Size = new System.Drawing.Size(163, 72);
             this.rolesCheckBoxList.TabIndex = 13;
+            // 
+            // userDetailsErrorProvider
+            // 
+            this.userDetailsErrorProvider.ContainerControl = this;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(27, 347);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Roles";
+            // 
+            // addUserBtn
+            // 
+            this.addUserBtn.Location = new System.Drawing.Point(273, 453);
+            this.addUserBtn.Name = "addUserBtn";
+            this.addUserBtn.Size = new System.Drawing.Size(106, 30);
+            this.addUserBtn.TabIndex = 15;
+            this.addUserBtn.Text = "Finish";
+            this.addUserBtn.UseVisualStyleBackColor = true;
+            this.addUserBtn.Click += new System.EventHandler(this.AddUserBtn_Click);
             // 
             // UserDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 504);
+            this.ClientSize = new System.Drawing.Size(407, 513);
+            this.Controls.Add(this.addUserBtn);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.rolesCheckBoxList);
             this.Controls.Add(this.userDisabledCheckBox);
             this.Controls.Add(this.confirmPasswordTextBox);
@@ -182,6 +215,7 @@
             this.Name = "UserDetailsForm";
             this.Text = "UserDetailsForm";
             this.Load += new System.EventHandler(this.UserDetailsForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.userDetailsErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +237,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox userDisabledCheckBox;
         private System.Windows.Forms.CheckedListBox rolesCheckBoxList;
+        private System.Windows.Forms.ErrorProvider userDetailsErrorProvider;
+        private System.Windows.Forms.Button addUserBtn;
+        private System.Windows.Forms.Label label7;
     }
 }

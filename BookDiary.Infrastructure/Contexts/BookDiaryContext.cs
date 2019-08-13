@@ -20,5 +20,6 @@ namespace BookDiary.Infrastructure.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserBook> UserBooks { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public object Korisnici { get; set; }
     }
 }

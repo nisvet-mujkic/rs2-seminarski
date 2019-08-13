@@ -59,6 +59,7 @@
             this.allUsersDataGrid.RowTemplate.Height = 24;
             this.allUsersDataGrid.Size = new System.Drawing.Size(920, 396);
             this.allUsersDataGrid.TabIndex = 0;
+            this.allUsersDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AllUsersDataGrid_CellDoubleClick);
             // 
             // UserId
             // 
