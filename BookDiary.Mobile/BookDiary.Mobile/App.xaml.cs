@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BookDiary.Mobile.Services;
 using BookDiary.Mobile.Views;
+using BookDiary.Mobile.Views.Login;
 
 namespace BookDiary.Mobile
 {
@@ -14,7 +15,7 @@ namespace BookDiary.Mobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()
