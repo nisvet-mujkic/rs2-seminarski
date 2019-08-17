@@ -7,7 +7,9 @@ using BookDiary.Model;
 using BookDiary.Model.Requests.Authors;
 using BookDiary.Model.Requests.Books;
 using BookDiary.Model.Requests.Quotes;
+using BookDiary.Model.Requests.ReadingActivities;
 using BookDiary.Model.Requests.Reviews;
+using BookDiary.Model.Requests.UserBooks;
 using BookDiary.Model.Requests.UserRoles;
 using BookDiary.Model.Requests.Users;
 using Microsoft.AspNetCore.Builder;
@@ -40,7 +42,7 @@ namespace BookDiary.API
             });
 
             services.AddScoped<IService<Model.Models.Role, object>, Service<Model.Models.Role, object, Infrastructure.Entities.Role>>();
-            _ = services.AddScoped<IService<Model.Models.UserRole, UserRolesSearchRequest>, Service<Model.Models.UserRole, UserRolesSearchRequest, Infrastructure.Entities.UserRole>>();
+            services.AddScoped<IService<Model.Models.UserRole, UserRolesSearchRequest>, Service<Model.Models.UserRole, UserRolesSearchRequest, Infrastructure.Entities.UserRole>>();
 
             services.AddScoped<IService<Model.Models.Genre, object>, Service<Model.Models.Genre, object, Infrastructure.Entities.Genre>>();
             services.AddScoped<ICrudService<Model.Models.Quote, QuotesSearchRequest, QuotesUpsertRequest, QuotesUpsertRequest>, QuotesService>();
@@ -48,6 +50,8 @@ namespace BookDiary.API
             services.AddScoped<ICrudService<Model.Models.User, UsersSearchRequest, UsersUpsertRequest, UsersUpsertRequest>, UsersService>();
             services.AddScoped<ICrudService<Model.Models.Review, ReviewsSearchRequest, ReviewsUpsertRequest, ReviewsUpsertRequest>, ReviewsService>();
             services.AddScoped<ICrudService<Model.Models.Author, AuthorsSearchRequest, AuthorsUpsertRequest, AuthorsUpsertRequest>, AuthorsService>();
+            services.AddScoped<ICrudService<Model.Models.UserBook, UserBooksSearchRequest, UserBooksUpsertRequest, UserBooksUpsertRequest>, UserBooksService>();
+            services.AddScoped<ICrudService<Model.Models.ReadingActivity, ReadingActivitiesSearchRequest, ReadingActivitiesUpsertRequest, ReadingActivitiesUpsertRequest>, ReadingActivitiesService>();
 
             string connectionString = Configuration.GetConnectionString(Global.ConnectionStrings.BookDiaryLocal);
             services.AddDbContext<BookDiaryContext>(options => options.UseSqlServer(connectionString));

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:BookDiary.Mobile.ViewModels.Quote"
+             x:Class="BookDiary.Mobile.Views.Quotes.QuotePage">
+
+    <ContentPage.BindingContext>
+        <vm:QuoteViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        
+        <StackLayout Padding="15" Orientation="Vertical">
+
+            <Label Text="{Binding Quote.QuoteText}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+            <Label Text="{Binding Quote.Book.Name}" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <Button Text="Proceed" VerticalOptions="CenterAndExpand" Clicked="Button_Clicked"></Button>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

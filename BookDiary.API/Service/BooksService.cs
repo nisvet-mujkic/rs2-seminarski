@@ -40,5 +40,17 @@ namespace BookDiary.API.Service
 
             return _mapper.Map<IEnumerable<Model.Models.Book>>(entities);
         }
+
+        public override async Task<Book> GetById(int id)
+        {
+            var query = _context.Set<Infrastructure.Entities.Book>().AsQueryable();
+
+            query = query.Include(x => x.Genre);
+            query = query.Include(x => x.Author);
+
+            var entity = await query.FirstOrDefaultAsync(x => x.Id == id);
+
+            return _mapper.Map<Model.Models.Book>(entity);
+        }
     }
 }

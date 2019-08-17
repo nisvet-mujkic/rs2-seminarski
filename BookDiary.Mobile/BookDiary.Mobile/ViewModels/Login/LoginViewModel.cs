@@ -1,5 +1,6 @@
 ﻿using BookDiary.Mobile.Services;
 using BookDiary.Mobile.Views;
+using BookDiary.Mobile.Views.Quotes;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,7 +14,7 @@ namespace BookDiary.Mobile.ViewModels.Login
 
         public LoginViewModel()
         {
-            LoginCommand = new Command(async () => await Login()); ;
+            LoginCommand = new Command(async () => await Login());
         }
 
         string _username = string.Empty;
@@ -42,7 +43,8 @@ namespace BookDiary.Mobile.ViewModels.Login
             try
             {
                 await _usersService.Get<dynamic>(null);
-                Application.Current.MainPage = new MainPage();
+                //Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new QuotePage();
             }
             catch (Exception ex)
             {

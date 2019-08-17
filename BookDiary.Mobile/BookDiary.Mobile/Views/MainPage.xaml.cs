@@ -1,11 +1,10 @@
-﻿using System;
+﻿using BookDiary.Mobile.Models;
+using BookDiary.Mobile.Views.Books;
+using BookDiary.Mobile.Views.ReadingList;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using BookDiary.Mobile.Models;
 
 namespace BookDiary.Mobile.Views
 {
@@ -35,6 +34,12 @@ namespace BookDiary.Mobile.Views
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        break;
+                    case (int)MenuItemType.Books:
+                        MenuPages.Add(id, new NavigationPage(new BooksPage()));
+                        break;
+                    case (int)MenuItemType.CurrentlyReading:
+                        MenuPages.Add(id, new NavigationPage(new ReadingListPage()));
                         break;
                 }
             }

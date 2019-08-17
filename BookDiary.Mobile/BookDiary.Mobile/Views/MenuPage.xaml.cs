@@ -1,9 +1,7 @@
 ﻿using BookDiary.Mobile.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace BookDiary.Mobile.Views
 {
@@ -21,7 +19,9 @@ namespace BookDiary.Mobile.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+                new HomeMenuItem {Id = MenuItemType.Books, Title="Books" },
+                new HomeMenuItem {Id = MenuItemType.CurrentlyReading, Title="My Reading List" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
