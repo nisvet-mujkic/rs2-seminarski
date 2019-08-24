@@ -68,8 +68,9 @@
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.userManagementToolStripMenuItem.Text = "User Management";
+            this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.UserManagementToolStripMenuItem_Click);
             // 
             // booksToolStripMenuItem
             // 

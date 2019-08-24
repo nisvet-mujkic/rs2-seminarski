@@ -24,8 +24,7 @@ namespace BookDiary.Desktop.Reviews
                 ShowPendingReviews = pendingCheckBox.Checked,
                 ShowApprovedReviews = approvedCheckBox.Checked,
                 ShowRejectedReviews = rejectedReviewsCheckBox.Checked,
-                IsBooksLoadingEnabled = true,
-                IsUsersLoadingEnabled = true
+                IsUserBookLoadingEnabled = true
             };
             await LoadReviews(searchRequest);
         }

@@ -19,7 +19,7 @@ namespace BookDiary.Desktop.Reviews
             {
                 var review = await _reviewService.GetById<Model.Models.Review>(_reviewId);
 
-                reviewerTxt.Text = review.User.ToString();
+                reviewerTxt.Text = review.UserBook.User.ToString();
                 reviewDateTxt.Text = review.CreatedAt.ToString("MM/dd/yyyy");
                 ratingTxt.Text = review.Rating.ToString();
                 reviewText.Text = review.Summary;

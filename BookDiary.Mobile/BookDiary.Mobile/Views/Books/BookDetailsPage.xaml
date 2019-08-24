@@ -8,13 +8,25 @@
              Title="{Binding Title}">
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="50" VerticalOptions="CenterAndExpand">
             
             <Label Text="{Binding Book.Name}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
+            <Label Text="{Binding Book.Author.Name}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="{Binding Book.Genre.Name}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
             <Label Text="{Binding Book.PagesInTotal}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="{Binding Book.YearPublished}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 

@@ -7,9 +7,27 @@
              x:Class="BookDiary.Mobile.Views.Review.ReviewPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+            <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="{Binding Review.UserBook.Book.Name}" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Genre" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Total Pages" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Finished on date" HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Review:" HorizontalOptions="CenterAndExpand" />
+            <Editor Text="{Binding Review.Summary}" AutoSize="TextChanges" HorizontalOptions="CenterAndExpand" ></Editor>
+
+            <Label Text="Quote to Remember:" HorizontalOptions="CenterAndExpand" />
+            <Editor  Text="{Binding Review.QuoteToRemember}" AutoSize="TextChanges" HorizontalOptions="CenterAndExpand"></Editor>
+
+            <Label Text="Mark (1 - 5):" HorizontalOptions="CenterAndExpand" />
+            <Entry  Text="{Binding Review.Rating}" HorizontalOptions="CenterAndExpand"></Entry>
+
+            <Button Text="Save" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked"></Button>
+            <Button IsVisible="{Binding AllowRecommend}" Text="Recommend" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_1"></Button>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

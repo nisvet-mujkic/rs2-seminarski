@@ -5,7 +5,8 @@
         Browse,
         About,
         Books,
-        CurrentlyReading
+        CurrentlyReading,
+        Trending,
     }
     public class HomeMenuItem
     {

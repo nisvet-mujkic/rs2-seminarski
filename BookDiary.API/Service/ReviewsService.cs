@@ -20,11 +20,8 @@ namespace BookDiary.API.Service
         {
             var query = _context.Set<Infrastructure.Entities.Review>().AsQueryable();
 
-            if (search.IsBooksLoadingEnabled == true)
-                query = query.Include(x => x.Book);
-
-            if (search.IsUsersLoadingEnabled == true)
-                query = query.Include(x => x.User);
+            if (search.IsUserBookLoadingEnabled == true)
+                query = query.Include(x => x.UserBook);
 
             if (search.ShowApprovedReviews)
                 query = query.Where(x => x.Approved == true);
@@ -48,10 +45,10 @@ namespace BookDiary.API.Service
         public override async Task<Review> GetById(int id)
         {
             var query = _context.Set<Infrastructure.Entities.Review>().AsQueryable();
-            query = query.Include(x => x.User);
-            query = query.Include(x => x.Book);
 
-            var entities = await query.FirstOrDefaultAsync(x => x.Id == id);
+            query = query.Include(x => x.UserBook).ThenInclude(x => x.Book).Include(x => x.UserBook).ThenInclude(x => x.User);
+
+            var entities = await query.FirstOrDefaultAsync(x => x.UserBookId == id);
 
             return _mapper.Map<Model.Models.Review>(entities);
         }

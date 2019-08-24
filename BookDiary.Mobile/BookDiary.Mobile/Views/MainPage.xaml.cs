@@ -1,6 +1,7 @@
 ﻿using BookDiary.Mobile.Models;
 using BookDiary.Mobile.Views.Books;
 using BookDiary.Mobile.Views.ReadingList;
+using BookDiary.Mobile.Views.Trending;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -40,6 +41,9 @@ namespace BookDiary.Mobile.Views
                         break;
                     case (int)MenuItemType.CurrentlyReading:
                         MenuPages.Add(id, new NavigationPage(new ReadingListPage()));
+                        break;
+                    case (int)MenuItemType.Trending:
+                        MenuPages.Add(id, new NavigationPage(new TrendingPage()));
                         break;
                 }
             }

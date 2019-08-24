@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookDiary.Desktop.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace BookDiary.Desktop
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void UserManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var usersForm = new UsersForm();
+            usersForm.Show();
         }
     }
 }

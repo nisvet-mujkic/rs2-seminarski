@@ -5,14 +5,9 @@ namespace BookDiary.Model.Models
 {
     public class Book: BaseEntity
     {
-        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
-        [Required]
-        [ForeignKey(nameof(Author))]
         public int AuthorId { get; set; }
         public Author Author { get; set; }
-        [Required]
-        [ForeignKey(nameof(Genre))]
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
         public int PagesInTotal { get; set; }

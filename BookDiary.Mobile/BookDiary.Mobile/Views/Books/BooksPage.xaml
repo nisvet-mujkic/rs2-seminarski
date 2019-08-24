@@ -17,20 +17,16 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-
-            <Label Text="Books"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20">
 
             <Entry Placeholder="Enter your search term"
                    Text="{Binding SearchTerm}"></Entry>
 
-            <Picker ItemsSource="{Binding Genres}"
+            <Picker Title="Genres" ItemsSource="{Binding Genres}"
                     ItemDisplayBinding="{Binding Name}"
                     SelectedItem="{Binding SelectedGenre}"></Picker>
 
-            <Picker ItemsSource="{Binding Authors}"
+            <Picker Title="Authors" ItemsSource="{Binding Authors}"
                     ItemDisplayBinding="{Binding Name}"
                     SelectedItem="{Binding SelectedAuthor}"></Picker>
 

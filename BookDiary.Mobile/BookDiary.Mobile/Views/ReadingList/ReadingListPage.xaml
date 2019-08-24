@@ -5,24 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:BookDiary.Mobile.ViewModels.ReadingList"
-             x:Class="BookDiary.Mobile.Views.ReadingList.ReadingListPage">
+             x:Class="BookDiary.Mobile.Views.ReadingList.ReadingListPage"
+             Title="My Reading List">
 
     <ContentPage.BindingContext>
         <vm:ReadingListViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
+        <StackLayout Padding="20">
             <ListView ItemsSource="{Binding CurrentlyReading}" ItemSelected="ListView_ItemSelected" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
-
-                              
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding Book.Name}" 
                                            LineBreakMode="NoWrap" 
@@ -34,7 +29,6 @@
                                            Style="{DynamicResource ListItemDetailTextStyle}"
                                            FontSize="13" />
                                 </StackLayout>
-
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

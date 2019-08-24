@@ -1,5 +1,6 @@
-﻿using BookDiary.Mobile.ViewModels.Tracking;
-
+﻿using BookDiary.Mobile.ViewModels.Review;
+using BookDiary.Mobile.ViewModels.Tracking;
+using BookDiary.Mobile.Views.Review;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,9 +33,10 @@ namespace BookDiary.Mobile.Views.Tracking
             await this.viewModel.MarkAsCompleted();
         }
 
-        private void Button_Clicked_2(object sender, System.EventArgs e)
+        private async void Button_Clicked_2(object sender, System.EventArgs e)
         {
-
+            var userBookId = this.viewModel.UserBook.Id;
+            await Navigation.PushAsync(new ReviewPage(new ReviewViewModel(userBookId)));
         }
     }
 }

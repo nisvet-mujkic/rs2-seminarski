@@ -16,5 +16,6 @@ namespace BookDiary.Infrastructure.Entities
         public Book Book { get; set; }
         public DateTime StartedReadingOn { get; set; }
         public DateTime? FinishedReadingOn { get; set; }
+        public Review Review { get; set; }
     }
 }
