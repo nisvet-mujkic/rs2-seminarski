@@ -1,4 +1,6 @@
 ﻿using BookDiary.API.IService;
+using BookDiary.Infrastructure.Results;
+using BookDiary.Model.Requests.Reports;
 using BookDiary.Model.Requests.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

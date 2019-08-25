@@ -40,7 +40,6 @@ namespace BookDiary.API.Service
 
             return _mapper.Map<IEnumerable<Model.Models.Book>>(entities);
         }
-
         public override async Task<Book> GetById(int id)
         {
             var query = _context.Set<Infrastructure.Entities.Book>().AsQueryable();
@@ -52,5 +51,6 @@ namespace BookDiary.API.Service
 
             return _mapper.Map<Model.Models.Book>(entity);
         }
+
     }
 }

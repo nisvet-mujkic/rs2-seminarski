@@ -1,4 +1,6 @@
-﻿using BookDiary.Model.Requests.Users;
+﻿using BookDiary.Infrastructure.Results;
+using BookDiary.Model.Requests.Reports;
+using BookDiary.Model.Requests.Users;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using BookDiary.API.IService;
 using BookDiary.Infrastructure.Data;
+using BookDiary.Infrastructure.Results;
 using BookDiary.Model.Models;
+using BookDiary.Model.Requests.Reports;
 using BookDiary.Model.Requests.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -153,5 +155,6 @@ namespace BookDiary.API.Service
             byte[] inArray = algorithm.ComputeHash(dst);
             return Convert.ToBase64String(inArray);
         }
+
     }
 }

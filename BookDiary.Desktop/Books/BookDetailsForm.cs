@@ -29,6 +29,7 @@ namespace BookDiary.Desktop.Books
             {
                 var entity = await _bookService.GetById<Model.Models.Book>(_bookId);
                 bookTitleTextBox.Text = entity.Name;
+                subjectsTextBox.Text = entity.Subject;
                 totalPagesNumeric.Value = entity.PagesInTotal;
                 publishedInNumeric.Value = entity.YearPublished;
                 archivedCheckBox.Checked = entity.Archived;
@@ -107,6 +108,7 @@ namespace BookDiary.Desktop.Books
                 Name = bookTitleTextBox.Text,
                 PagesInTotal = (int)totalPagesNumeric.Value,
                 YearPublished = (int)publishedInNumeric.Value,
+                Subject = subjectsTextBox.Text.ToLower().Trim()
                 // add image
             };
 

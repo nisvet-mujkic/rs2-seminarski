@@ -68,7 +68,7 @@
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.userManagementToolStripMenuItem.Text = "User Management";
             this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.UserManagementToolStripMenuItem_Click);
             // 
@@ -86,12 +86,14 @@
             this.booksManagementToolStripMenuItem.Name = "booksManagementToolStripMenuItem";
             this.booksManagementToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.booksManagementToolStripMenuItem.Text = "Books Management";
+            this.booksManagementToolStripMenuItem.Click += new System.EventHandler(this.BooksManagementToolStripMenuItem_Click);
             // 
             // quotesManagementToolStripMenuItem
             // 
             this.quotesManagementToolStripMenuItem.Name = "quotesManagementToolStripMenuItem";
             this.quotesManagementToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.quotesManagementToolStripMenuItem.Text = "Quotes Management";
+            this.quotesManagementToolStripMenuItem.Click += new System.EventHandler(this.QuotesManagementToolStripMenuItem_Click);
             // 
             // reviewsToolStripMenuItem
             // 
@@ -106,6 +108,7 @@
             this.reviewsManagementToolStripMenuItem.Name = "reviewsManagementToolStripMenuItem";
             this.reviewsManagementToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.reviewsManagementToolStripMenuItem.Text = "Reviews Management";
+            this.reviewsManagementToolStripMenuItem.Click += new System.EventHandler(this.ReviewsManagementToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
@@ -122,18 +125,21 @@
             this.reportsManagementToolStripMenuItem.Name = "reportsManagementToolStripMenuItem";
             this.reportsManagementToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
             this.reportsManagementToolStripMenuItem.Text = "Most Popular Books";
+            this.reportsManagementToolStripMenuItem.Click += new System.EventHandler(this.ReportsManagementToolStripMenuItem_Click);
             // 
             // mostActiveUsersToolStripMenuItem
             // 
             this.mostActiveUsersToolStripMenuItem.Name = "mostActiveUsersToolStripMenuItem";
             this.mostActiveUsersToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
             this.mostActiveUsersToolStripMenuItem.Text = "Most Active Users";
+            this.mostActiveUsersToolStripMenuItem.Click += new System.EventHandler(this.MostActiveUsersToolStripMenuItem_Click);
             // 
             // genreComparisonReportToolStripMenuItem
             // 
             this.genreComparisonReportToolStripMenuItem.Name = "genreComparisonReportToolStripMenuItem";
             this.genreComparisonReportToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
             this.genreComparisonReportToolStripMenuItem.Text = "Genre Comparison Report";
+            this.genreComparisonReportToolStripMenuItem.Click += new System.EventHandler(this.GenreComparisonReportToolStripMenuItem_Click);
             // 
             // MainForm
             // 

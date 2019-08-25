@@ -39,6 +39,18 @@
     <Reference Include="Flurl.Http, Version=2.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Flurl.Http.2.4.1\lib\net46\Flurl.Http.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.3.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -48,6 +60,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,11 +111,41 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Books\MostPopularBooksFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Books\MostPopularBooksFilter.Designer.cs">
+      <DependentUpon>MostPopularBooksFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Books\MostPopularBooksView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Books\MostPopularBooksView.Designer.cs">
+      <DependentUpon>MostPopularBooksView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Genres\GenreComparisonViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Genres\GenreComparisonViewReport.Designer.cs">
+      <DependentUpon>GenreComparisonViewReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\ReportsForm.Designer.cs">
       <DependentUpon>ReportsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Users\MostActiveUsersFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Users\MostActiveUsersFilter.Designer.cs">
+      <DependentUpon>MostActiveUsersFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Users\MostActiveUsersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Users\MostActiveUsersView.Designer.cs">
+      <DependentUpon>MostActiveUsersView.cs</DependentUpon>
     </Compile>
     <Compile Include="Reviews\ReviewDetailsForm.cs">
       <SubType>Form</SubType>
@@ -116,6 +159,7 @@
     <Compile Include="Reviews\ReviewsForm.Designer.cs">
       <DependentUpon>ReviewsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Users\UserDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +200,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\Books\MostPopularBooksFilter.resx">
+      <DependentUpon>MostPopularBooksFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Genres\GenreComparison.rdlc" />
+    <EmbeddedResource Include="Reports\Genres\GenreComparisonViewReport.resx">
+      <DependentUpon>GenreComparisonViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MostPopularBooks.rdlc" />
+    <EmbeddedResource Include="Reports\Users\MostActiveUsers.rdlc" />
+    <EmbeddedResource Include="Reports\Users\MostActiveUsersFilter.resx">
+      <DependentUpon>MostActiveUsersFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Users\MostActiveUsersView.resx">
+      <DependentUpon>MostActiveUsersView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reviews\ReviewDetailsForm.resx">
       <DependentUpon>ReviewDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +228,9 @@
       <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BookDiary.Infrastructure.Results.GenreComparison.datasource" />
+    <None Include="Properties\DataSources\BookDiary.Infrastructure.Results.MostActiveUsers.datasource" />
+    <None Include="Properties\DataSources\BookDiary.Infrastructure.Results.MostPopularBook.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -183,13 +245,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookDiary.Infrastructure\BookDiary.Infrastructure.csproj">
+      <Project>{6c6a9818-a341-4e47-a43a-2a60e69edc81}</Project>
+      <Name>BookDiary.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookDiary.Model\BookDiary.Model.csproj">
       <Project>{6F95542A-686D-4539-8CF6-48BF16C3A055}</Project>
       <Name>BookDiary.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

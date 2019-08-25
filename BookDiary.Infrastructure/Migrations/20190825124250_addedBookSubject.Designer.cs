@@ -4,14 +4,16 @@ using BookDiary.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookDiary.Infrastructure.Migrations
 {
     [DbContext(typeof(BookDiaryContext))]
-    partial class BookDiaryContextModelSnapshot : ModelSnapshot
+    [Migration("20190825124250_addedBookSubject")]
+    partial class addedBookSubject
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

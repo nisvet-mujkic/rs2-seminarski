@@ -1,14 +1,26 @@
-﻿using BookDiary.API.Helpers.Controllers;
-using BookDiary.API.IService;
-using BookDiary.Model.Models;
-using BookDiary.Model.Requests.Books;
+﻿using BookDiary.API.IService;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BookDiary.API.Controllers
 {
-    public class RecommendationController : BaseController<Model.Models.Book, BooksSearchRequest>
+    //[Authorize]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RecommendationController
     {
-        public RecommendationController(IService<Book, BooksSearchRequest> service) : base(service)
+        private readonly IRecommendationService _recommendationService;
+
+        public RecommendationController(IRecommendationService recommendationService)
         {
+            _recommendationService = recommendationService;
         }
-    }
+
+        [HttpGet("{id}")]
+        public async Task<List<Model.Models.Book>> GetById(int id)
+        {
+            return await _recommendationService.Recommend(id);
+        }
+    }   
 }

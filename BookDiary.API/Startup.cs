@@ -51,7 +51,10 @@ namespace BookDiary.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(x => {
+                // x.EnableEndpointRouting = false;
+                x.Filters.Add<ErrorFilter>();
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper();
             services.AddSwaggerGen(c =>
             {
@@ -66,9 +69,11 @@ namespace BookDiary.API
 
             #region Service Registration
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IReportsService, ReportsService>();
+            services.AddScoped<IRecommendationService, RecommendationService>();
             services.AddScoped<IService<Model.Models.Role, object>, Service<Model.Models.Role, object, Infrastructure.Entities.Role>>();
             services.AddScoped<IService<Model.Models.UserRole, UserRolesSearchRequest>, Service<Model.Models.UserRole, UserRolesSearchRequest, Infrastructure.Entities.UserRole>>();
-            services.AddScoped<IService<Model.Models.Book, BooksSearchRequest>, Service<Model.Models.Book, BooksSearchRequest, Infrastructure.Entities.Book>>();
+            //services.AddScoped<IService<Model.Models.Book, BooksSearchRequest>, Service<Model.Models.Book, BooksSearchRequest, Infrastructure.Entities.Book>>();
             services.AddScoped<IService<Model.Models.Genre, object>, Service<Model.Models.Genre, object, Infrastructure.Entities.Genre>>();
             services.AddScoped<ICrudService<Model.Models.Quote, QuotesSearchRequest, QuotesUpsertRequest, QuotesUpsertRequest>, QuotesService>();
             services.AddScoped<ICrudService<Model.Models.Book, BooksSearchRequest, BooksUpsertRequest, BooksUpsertRequest>, BooksService>();
