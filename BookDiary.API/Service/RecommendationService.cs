@@ -29,7 +29,8 @@ namespace BookDiary.API.Service
             var recommendedGenreId = await GetRecommendedGenreId(userId);
             var recommendedSubject = await GetRecommendedSubject(userId);
 
-            var entities = await _context.Books.Where(x => (x.GenreId == recommendedGenreId || recommendedGenreId == 0) || 
+            var entities = await _context.Books.Include(x => x.Author).Include(x => x.Genre)
+                                               .Where(x => (x.GenreId == recommendedGenreId || recommendedGenreId == 0) || 
                                                      (x.Subject.Contains(recommendedSubject) || recommendedSubject == string.Empty))
                                                .OrderByDescending(x => x.YearPublished)
                                                .Take(10)

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookDiary.Model.Models
 {
-    public class Book: BaseEntity
+    public class Book : BaseEntity
     {
         public string Name { get; set; }
         public int AuthorId { get; set; }

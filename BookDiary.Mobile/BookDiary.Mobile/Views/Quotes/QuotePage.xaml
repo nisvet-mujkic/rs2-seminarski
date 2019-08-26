@@ -15,8 +15,8 @@
         <StackLayout Padding="50" Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Label FontSize="Medium" Text="{Binding Quote.QuoteText}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
             <BoxView HeightRequest="2" Color="LightBlue"></BoxView>
-            <Label Text="{Binding Quote.Book.Name}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-            <Button Margin="0, 50, 0, 0" Text="Proceed" VerticalOptions="CenterAndExpand" Clicked="Button_Clicked"></Button>
+            <Label Text="{Binding Quote.Book.Name}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+            <Button Margin="0, 50, 0, 0" Text="Proceed" VerticalOptions="CenterAndExpand" Clicked="Button_Clicked" BackgroundColor="LightGray"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

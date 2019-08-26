@@ -108,8 +108,8 @@ namespace BookDiary.Desktop.Books
                 Name = bookTitleTextBox.Text,
                 PagesInTotal = (int)totalPagesNumeric.Value,
                 YearPublished = (int)publishedInNumeric.Value,
-                Subject = subjectsTextBox.Text.ToLower().Trim()
-                // add image
+                Subject = subjectsTextBox.Text.ToLower().Trim(),
+                CoverImage = request.CoverImage
             };
 
             var authorIdObj = bookAuthorComboBox.SelectedValue;
@@ -119,7 +119,7 @@ namespace BookDiary.Desktop.Books
                 searchRequest.AuthorId = authorId;
             }
 
-            var genreIdObj = bookAuthorComboBox.SelectedValue;
+            var genreIdObj = bookGenreComboBox.SelectedValue;
 
             if (int.TryParse(genreIdObj.ToString(), out int genreId))
             {

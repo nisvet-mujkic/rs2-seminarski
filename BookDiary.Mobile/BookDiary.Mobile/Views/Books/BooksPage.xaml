@@ -7,7 +7,7 @@
              xmlns:vm="clr-namespace:BookDiary.Mobile.ViewModels.Books"
              x:Class="BookDiary.Mobile.Views.Books.BooksPage"
              xmlns:converters="clr-namespace:BookDiary.Mobile.Converters"
-             >
+             Title="Find a book to read" >
     <ContentPage.BindingContext>
         <vm:BooksViewModel />
     </ContentPage.BindingContext>
@@ -37,19 +37,62 @@
                             <StackLayout Padding="10" Orientation="Horizontal">
 
                                 <StackLayout>
-                                    <Image Source="{Binding CoverImage, Converter={StaticResource imageConverter}}"></Image>
+                                    <Image WidthRequest="60" HeightRequest="60" Source="{Binding CoverImage, Converter={StaticResource imageConverter}}"></Image>
                                 </StackLayout>
 
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Name}" 
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                    <Label Text="{Binding PagesInTotal}" 
+                                        <Label Text="by" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+
+                                        <Label Text="{Binding Author.Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <Label Text="This book is published in" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="13" />
+
+                                        <Label Text="{Binding YearPublished}" 
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemDetailTextStyle}"
                                            FontSize="13" />
+
+                                        <Label Text=". It has" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="13" />
+
+                                        <Label Text="{Binding PagesInTotal}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+
+                                        <Label Text="pages and it is about following subjects:" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="13" />
+
+                                        <Label Text="{Binding Subject}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    </StackLayout>
+                                   
                                 </StackLayout>
 
                             </StackLayout>

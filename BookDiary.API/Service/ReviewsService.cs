@@ -21,7 +21,7 @@ namespace BookDiary.API.Service
             var query = _context.Set<Infrastructure.Entities.Review>().AsQueryable();
 
             if (search.IsUserBookLoadingEnabled == true)
-                query = query.Include(x => x.UserBook);
+                query = query.Include(x => x.UserBook).ThenInclude(x => x.User);
 
             if (search.ShowApprovedReviews)
                 query = query.Where(x => x.Approved == true);
@@ -32,7 +32,10 @@ namespace BookDiary.API.Service
             if (search.ShowPendingReviews)
                 query = query.Where(x => x.Approved == null);
 
-            if(search.From != DateTime.MinValue && search.To != DateTime.MinValue)
+            if (search.BookId.HasValue)
+                query = query.Where(x => x.UserBook.BookId == search.BookId.Value);
+
+            if (search.From != DateTime.MinValue && search.To != DateTime.MinValue)
                 query = query.Where(x => x.CreatedAt > search.From && x.CreatedAt < search.To);
 
             query = query.OrderByDescending(x => x.CreatedAt);

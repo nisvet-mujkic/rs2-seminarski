@@ -5,37 +5,61 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="BookDiary.Mobile.Views.Tracking.TrackingPage"
-             Title="{Binding Title}">
-
+             xmlns:converters="clr-namespace:BookDiary.Mobile.Converters"
+             Title="Reading progress">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imageConverter"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="StartAndExpand" Padding="20">
 
-            <Label Text="You are reading following book" HorizontalOptions="CenterAndExpand" />
+            <Label Text="You are reading following book" FontSize="24" HorizontalOptions="CenterAndExpand" />
 
+            <BoxView HeightRequest="2" Color="LightBlue"></BoxView>
 
-            <Label Text="{Binding Book.Name}" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Book.Author.Name}" HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="{Binding Book.Name}" FontSize="22" Font="Bold,20" />
+                <Label Text="by" FontSize="22" Font="Bold,20"/>
+                <Label Text="{Binding Book.Author.Name}" FontSize="22" Font="Bold,20" />
+            </StackLayout>
+
+            <Image WidthRequest="200" HeightRequest="200" Source="{Binding Book.CoverImage, Converter={StaticResource imageConverter}}"></Image>
+
             <Label Text="{Binding DateAndCurrentDay}" HorizontalOptions="CenterAndExpand" />
             
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HeightRequest="20">
+                <ProgressBar x:Name="TrackerProgressBar"
+                         Progress="{Binding Percentage}"
+                         WidthRequest="500"
+                         HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
 
+            <BoxView HeightRequest="2" Color="LightBlue"></BoxView>
 
-            <Label Text="Pages read today" HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Margin="0, 5, 0, 0" Text="I have read this many pages today" />
+                <Entry Placeholder="" Text="{Binding PagesRead}" ></Entry>
+                <Button Text="Add to total pages read" Clicked="Button_Clicked" BackgroundColor="LightGray" ></Button>
 
-            <Entry Text="{Binding PagesRead}" HorizontalOptions="CenterAndExpand" ></Entry>
-            <Button Text="Add to total pages read" Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand" ></Button>
+            </StackLayout>
 
-            <Label Text="Total Pages" HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="This book has "/>
+                <Label Text="{Binding Book.PagesInTotal}" />
+                <Label Text="pages and you have read "/>
+                <Label Text="{Binding TotalPagesRead}" />
+                <Label Text="pages so far."/>
+            </StackLayout>
 
-            <Entry Text="{Binding Book.PagesInTotal}" HorizontalOptions="CenterAndExpand" IsEnabled="False"></Entry>
+            <BoxView HeightRequest="2" Color="LightBlue"></BoxView>
 
-            <Label Text="Pages read so far" HorizontalOptions="CenterAndExpand" />
-
-            <Entry Text="{Binding TotalPagesRead}" HorizontalOptions="CenterAndExpand" IsEnabled="False"></Entry>
-
-            <Button Text="Mark as completed" Clicked="Button_Clicked_1" HorizontalOptions="CenterAndExpand" ></Button>
-            
-            <Button Text="Review" Clicked="Button_Clicked_2" HorizontalOptions="CenterAndExpand" ></Button>
-
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Finish Reading" Clicked="Button_Clicked_1" WidthRequest="200" BackgroundColor="LightGray" ></Button>
+                <Button Text="Review" Clicked="Button_Clicked_2" WidthRequest="200" BackgroundColor="LightGray" ></Button>
+            </StackLayout>
 
         </StackLayout>
     </ContentPage.Content>

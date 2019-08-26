@@ -2,8 +2,6 @@
 {
     public enum MenuItemType
     {
-        Browse,
-        About,
         Books,
         CurrentlyReading,
         Trending,

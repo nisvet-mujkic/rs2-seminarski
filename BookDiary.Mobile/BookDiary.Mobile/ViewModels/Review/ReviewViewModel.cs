@@ -10,10 +10,13 @@ namespace BookDiary.Mobile.ViewModels.Review
     public class ReviewViewModel: BaseViewModel
     {
         private readonly ApiService _reviewService = new ApiService("Reviews");
+        private readonly ApiService _booksService = new ApiService("Books");
         private readonly int _userBookId = default;
-        public ReviewViewModel(int userBookId)
+        private readonly int _bookId = default;
+        public ReviewViewModel(int userBookId, int bookId)
         {
             _userBookId = userBookId;
+            _bookId = bookId;
             InitCommand = new Command(async () => await Init());
             ShareCommand = new Command(async () => await ShareContent());
         }
@@ -31,11 +34,20 @@ namespace BookDiary.Mobile.ViewModels.Review
             set { SetProperty(ref _review, value); }
         }
 
+        private Model.Models.Book _book = new Model.Models.Book();
+        public Model.Models.Book Book
+        {
+            get { return _book; }
+            set { SetProperty(ref _book, value); }
+        }
+
         public ICommand InitCommand { get; set; }
         public ICommand ShareCommand { get; set; }
         public async Task Init()
         {
             var entity = await _reviewService.GetById<Model.Models.Review>(_userBookId);
+            var book = await _booksService.GetById<Model.Models.Book>(_bookId);
+            Book = book;
 
             if(entity != null)
             {
@@ -47,8 +59,10 @@ namespace BookDiary.Mobile.ViewModels.Review
         {
             await Share.RequestAsync(new ShareTextRequest
             {
-                Text = "Nisvet Mujkic",
-                Title = "Share Text"
+                Text = $"Hello there, I have rated this book with a {Review.Rating}." +
+                       $"\nThis is what I think about this book in short: >> {Review.Summary} <<." +
+                       $"\nThis is the quote that I will remember from this book: >> {Review.QuoteToRemember} <<.",
+                Title = $"Recommendation of the book titled {Book.Name} by {Book.Author.Name}"
             });
         }
 

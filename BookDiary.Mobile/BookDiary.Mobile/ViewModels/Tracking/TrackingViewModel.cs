@@ -29,7 +29,7 @@ namespace BookDiary.Mobile.ViewModels.Tracking
         {
             get
             {
-                var startedReadingOn = UserBook.StartedReadingOn.ToString("dddd MMMM yyyy");
+                var startedReadingOn = UserBook.StartedReadingOn.ToString("dd MMMM yyyy");
                 var day = (DateTime.Now - UserBook.StartedReadingOn).Days;
                 _dateAndCurrentDay = $"{startedReadingOn} - (Current reading day: {day})";
                 return _dateAndCurrentDay;
@@ -51,6 +51,13 @@ namespace BookDiary.Mobile.ViewModels.Tracking
             set { SetProperty(ref _totalPagesRead, value); }
         }
 
+        private double _percentage = default;
+        public double Percentage
+        {
+            get { return _percentage; }
+            set { SetProperty(ref _percentage, value); }
+        }
+
         private Model.Models.Book _book = null;
         public Model.Models.Book Book
         {
@@ -63,7 +70,7 @@ namespace BookDiary.Mobile.ViewModels.Tracking
         public ICommand MarkAsCompletedCommand { get; set; }
         public async Task Init()
         {
-            var bookEntity = await _booksService.GetById<Model.Models.Book>(UserBook.Id);
+            var bookEntity = await _booksService.GetById<Model.Models.Book>(UserBook.BookId);
             Book = bookEntity;
 
             var searchRequest = new ReadingActivitiesSearchRequest()
@@ -74,6 +81,7 @@ namespace BookDiary.Mobile.ViewModels.Tracking
 
             var readingActivities = await _readingActivitiesService.Get<List<Model.Models.ReadingActivity>>(searchRequest);
             TotalPagesRead = readingActivities.Sum(activity => activity.PagesRead);
+            Percentage = (double)TotalPagesRead / (double)Book.PagesInTotal;
         }
 
         public async Task AddPages()

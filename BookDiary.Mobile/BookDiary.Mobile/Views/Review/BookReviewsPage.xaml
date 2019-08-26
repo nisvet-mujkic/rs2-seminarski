@@ -4,38 +4,21 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:vm="clr-namespace:BookDiary.Mobile.ViewModels.ReadingList"
-             x:Class="BookDiary.Mobile.Views.ReadingList.ReadingListPage"
-             xmlns:converters="clr-namespace:BookDiary.Mobile.Converters"
-             Title="My Reading List">
-
-    <ContentPage.BindingContext>
-        <vm:ReadingListViewModel />
-    </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:ImageConverter x:Key="imageConverter"></converters:ImageConverter>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             x:Class="BookDiary.Mobile.Views.Review.BookReviewsPage">
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <ListView ItemsSource="{Binding CurrentlyReading}" ItemSelected="ListView_ItemSelected" >
+            <ListView ItemsSource="{Binding Reviews}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
-
-                                <StackLayout>
-                                    <Image WidthRequest="60" HeightRequest="60" Source="{Binding Book.CoverImage, Converter={StaticResource imageConverter}}"></Image>
-                                </StackLayout>
-
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Book.Name}" 
+                                    <Label Text="{Binding Rating}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                    <Label Text="{Binding StartedReadingOn}" 
+                                    <Label Text="{Binding Summary}" 
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemDetailTextStyle}"
                                            FontSize="13" />

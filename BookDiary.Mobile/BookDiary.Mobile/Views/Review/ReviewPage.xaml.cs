@@ -25,7 +25,6 @@ namespace BookDiary.Mobile.Views.Review
         {
             await this.viewModel.AddOrEditReview();
             await this.viewModel.Init();
-
         }
 
         private async void Button_Clicked_1(object sender, System.EventArgs e)

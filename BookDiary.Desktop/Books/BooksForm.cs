@@ -57,7 +57,7 @@ namespace BookDiary.Desktop.Books
                 searchRequest.GenreId = genreId;
             }
 
-            var authorIdObj = bookGenresComboBox.SelectedValue;
+            var authorIdObj = bookAuthorsComboBox.SelectedValue;
 
             if (int.TryParse(authorIdObj.ToString(), out int authorId))
             {
