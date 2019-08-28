@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BookDiary.API.Exceptions;
 using BookDiary.API.IService;
 using BookDiary.Infrastructure.Data;
 using BookDiary.Infrastructure.Results;
@@ -81,7 +82,7 @@ namespace BookDiary.API.Service
             var entity = _mapper.Map<Infrastructure.Entities.User>(request);
 
             if (request.Password != request.ConfirmPassword)
-                throw new Exception("Passwords do not match");
+                throw new UserException("Passwords do not match");
 
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);

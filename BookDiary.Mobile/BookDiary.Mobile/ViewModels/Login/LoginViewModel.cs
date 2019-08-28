@@ -62,8 +62,9 @@ namespace BookDiary.Mobile.ViewModels.Login
             {
                 if (ApiService.Username == user.Username)
                 {
-                    if (!Application.Current.Properties.ContainsKey("id"))
+                    if (Application.Current.Properties.ContainsKey("id"))
                     {
+                        Application.Current.Properties.Clear();
                         Application.Current.Properties.Add("id", user.Id);
                     }
                 }

@@ -40,6 +40,8 @@
             this.reportsManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mostActiveUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.genreComparisonReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,11 +143,32 @@
             this.genreComparisonReportToolStripMenuItem.Text = "Genre Comparison Report";
             this.genreComparisonReportToolStripMenuItem.Click += new System.EventHandler(this.GenreComparisonReportToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(194, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(359, 76);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Book Diary";
+            // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLabel.Location = new System.Drawing.Point(197, 201);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(0, 58);
+            this.welcomeLabel.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.welcomeLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -171,5 +194,7 @@
         private System.Windows.Forms.ToolStripMenuItem quotesManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mostActiveUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem genreComparisonReportToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

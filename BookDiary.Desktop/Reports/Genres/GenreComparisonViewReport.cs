@@ -26,7 +26,6 @@ namespace BookDiary.Desktop.Reports
         {
             var rds = new ReportDataSource("dsGenreComparison", GenreComparisonList);
             this.reportViewer1.LocalReport.DataSources.Add(rds);
-            //this.genresReportViewer.LocalReport.SetParameters(new ReportParameter("Ponuda", Ponuda));
             this.reportViewer1.RefreshReport();
         }
     }

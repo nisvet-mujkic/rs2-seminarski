@@ -27,6 +27,8 @@ namespace BookDiary.API.Service
 
             if (search.FinishedOn.HasValue)
                 query = query.Where(x => x.FinishedReadingOn <= search.FinishedOn.Value);
+            else if(search.FinishedOn == null)
+                query = query.Where(x => x.FinishedReadingOn == null);
 
             if (search.FinishedWithReading.HasValue && !search.FinishedWithReading.HasValue)
                 query = query.Where(x => x.FinishedReadingOn == null);

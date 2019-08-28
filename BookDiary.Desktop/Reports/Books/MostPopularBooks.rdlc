@@ -6,15 +6,12 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.125in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>2.125in</Width>
+              <Width>2.09375in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.50417in</Height>
+              <Height>0.5625in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -25,7 +22,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total Read Book Count</Value>
+                              <Value>Total Times Read</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -57,64 +54,23 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox3">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Total Pages Read</Value>
-                              <Style>
-                                <FontSize>11pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>#666666</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox3</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <BottomBorder>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <BackgroundColor>White</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.50417in</Height>
+              <Height>0.5625in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="TotalReadBookCount">
+                    <Textbox Name="TotalTimesRead">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!TotalReadBookCount.Value)</Value>
+                              <Value>=Sum(Fields!TotalTimesRead.Value)</Value>
                               <Style>
-                                <FontWeight>Normal</FontWeight>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#333333</Color>
                               </Style>
                             </TextRun>
@@ -124,42 +80,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>TotalReadBookCount</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <BackgroundColor>White</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="TotalPagesRead">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Sum(Fields!TotalPagesRead.Value)</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                                <Color>#333333</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>TotalPagesRead</rd:DefaultName>
+                      <rd:DefaultName>TotalTimesRead</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -180,23 +101,22 @@
         <TablixColumnHierarchy>
           <TablixMembers>
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>2.125in</Size>
+                <Size>2.09375in</Size>
                 <CellContents>
-                  <Textbox Name="Textbox9">
+                  <Textbox Name="Textbox7">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Name</Value>
+                            <Value>Title</Value>
                             <Style>
                               <FontSize>11pt</FontSize>
                               <FontWeight>Bold</FontWeight>
@@ -209,7 +129,7 @@
                         </Style>
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox9</rd:DefaultName>
+                    <rd:DefaultName>Textbox7</rd:DefaultName>
                     <Style>
                       <Border>
                         <Style>None</Style>
@@ -231,16 +151,16 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.125in</Size>
+                    <Size>2.09375in</Size>
                     <CellContents>
-                      <Textbox Name="Textbox7">
+                      <Textbox Name="Textbox5">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Username</Value>
+                                <Value>Genre</Value>
                                 <Style>
                                   <FontSize>11pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
@@ -253,7 +173,7 @@
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox7</rd:DefaultName>
+                        <rd:DefaultName>Textbox5</rd:DefaultName>
                         <Style>
                           <Border>
                             <Style>None</Style>
@@ -275,16 +195,16 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.125in</Size>
+                        <Size>2.09375in</Size>
                         <CellContents>
-                          <Textbox Name="Textbox5">
+                          <Textbox Name="Textbox3">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Joined On</Value>
+                                    <Value>Author</Value>
                                     <Style>
                                       <FontSize>11pt</FontSize>
                                       <FontWeight>Bold</FontWeight>
@@ -297,7 +217,7 @@
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox5</rd:DefaultName>
+                            <rd:DefaultName>Textbox3</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Style>None</Style>
@@ -325,27 +245,27 @@
               </TablixMembers>
             </TablixMember>
             <TablixMember>
-              <Group Name="Name">
+              <Group Name="Title">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!Name.Value</GroupExpression>
+                  <GroupExpression>=Fields!Title.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
               <SortExpressions>
                 <SortExpression>
-                  <Value>=Fields!Name.Value</Value>
+                  <Value>=Fields!Title.Value</Value>
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>2.125in</Size>
+                <Size>2.09375in</Size>
                 <CellContents>
-                  <Textbox Name="Name">
+                  <Textbox Name="Title">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Fields!Name.Value</Value>
+                            <Value>=Fields!Title.Value</Value>
                             <Style>
                               <FontWeight>Normal</FontWeight>
                               <Color>#333333</Color>
@@ -357,7 +277,7 @@
                         </Style>
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Name</rd:DefaultName>
+                    <rd:DefaultName>Title</rd:DefaultName>
                     <Style>
                       <Border>
                         <Style>None</Style>
@@ -379,16 +299,16 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.125in</Size>
+                    <Size>2.09375in</Size>
                     <CellContents>
-                      <Textbox Name="Username">
+                      <Textbox Name="Genre">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!Username.Value</Value>
+                                <Value>=Fields!Genre.Value</Value>
                                 <Style>
                                   <FontWeight>Normal</FontWeight>
                                   <Color>#333333</Color>
@@ -400,7 +320,7 @@
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Username</rd:DefaultName>
+                        <rd:DefaultName>Genre</rd:DefaultName>
                         <Style>
                           <Border>
                             <Style>None</Style>
@@ -422,16 +342,16 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.125in</Size>
+                        <Size>2.09375in</Size>
                         <CellContents>
-                          <Textbox Name="JoinedOn">
+                          <Textbox Name="Author">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!JoinedOn.Value</Value>
+                                    <Value>=Fields!Author.Value</Value>
                                     <Style>
                                       <FontWeight>Normal</FontWeight>
                                       <Color>#333333</Color>
@@ -443,7 +363,7 @@
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>JoinedOn</rd:DefaultName>
+                            <rd:DefaultName>Author</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Style>None</Style>
@@ -472,10 +392,10 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>dsUsers</DataSetName>
-        <Top>1.025in</Top>
-        <Height>1.00834in</Height>
-        <Width>10.625in</Width>
+        <DataSetName>dsBooks</DataSetName>
+        <Top>0.78333in</Top>
+        <Height>1.125in</Height>
+        <Width>8.375in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -489,7 +409,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Book Diary :: Most Active Users Report</Value>
+                <Value>Book Diary :: Most Popular Books Report</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -502,8 +422,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.39166in</Top>
-        <Left>2.98334in</Left>
+        <Top>0.2375in</Top>
+        <Left>1.8125in</Left>
         <Height>0.39167in</Height>
         <Width>4.25833in</Width>
         <ZIndex>1</ZIndex>
@@ -518,10 +438,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.45833in</Height>
+    <Height>2.94167in</Height>
     <Style />
   </Body>
-  <Width>10.625in</Width>
+  <Width>8.375in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
@@ -536,44 +456,40 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>f948d445-4908-4ea8-8291-4cdf475b04ca</rd:DataSourceID>
+      <rd:DataSourceID>7aca1bb4-fdd7-40a8-a287-b625b81b85c2</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dsUsers">
+    <DataSet Name="dsBooks">
       <Query>
         <DataSourceName>BookDiaryInfrastructureResults</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="JoinedOn">
-          <DataField>JoinedOn</DataField>
+        <Field Name="Author">
+          <DataField>Author</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
+        <Field Name="Genre">
+          <DataField>Genre</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TotalPagesRead">
-          <DataField>TotalPagesRead</DataField>
+        <Field Name="Title">
+          <DataField>Title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TotalTimesRead">
+          <DataField>TotalTimesRead</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="TotalReadBookCount">
-          <DataField>TotalReadBookCount</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Username">
-          <DataField>Username</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BookDiary.Infrastructure.Results</rd:DataSetName>
-        <rd:TableName>MostActiveUsers</rd:TableName>
-        <rd:ObjectDataSourceType>BookDiary.Infrastructure.Results.MostActiveUsers, BookDiary.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>MostPopularBook</rd:TableName>
+        <rd:ObjectDataSourceType>BookDiary.Infrastructure.Results.MostPopularBook, BookDiary.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>20cba84b-453a-44a3-893a-08dd40ca24be</rd:ReportID>
+  <rd:ReportID>c0ed1a0d-bf48-4e0d-a473-99ed999e4ed0</rd:ReportID>
 </Report>

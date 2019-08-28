@@ -31,10 +31,17 @@ namespace BookDiary.Desktop.Reviews
 
         private void ReviewsDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var reviewId = int.Parse(reviewsDataGrid.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                var reviewId = int.Parse(reviewsDataGrid.SelectedRows[0].Cells[0].Value.ToString());
 
-            var reviewDetailsForm = new ReviewDetailsForm(reviewId);
-            reviewDetailsForm.Show();
+                var reviewDetailsForm = new ReviewDetailsForm(reviewId);
+                reviewDetailsForm.Show();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private async Task LoadReviews(ReviewsSearchRequest searchRequest = null)

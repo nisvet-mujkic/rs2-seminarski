@@ -150,7 +150,7 @@
             // ReviewerColumn
             // 
             this.ReviewerColumn.DataPropertyName = "UserBook";
-            this.ReviewerColumn.HeaderText = "Reviewer";
+            this.ReviewerColumn.HeaderText = "Details";
             this.ReviewerColumn.MinimumWidth = 6;
             this.ReviewerColumn.Name = "ReviewerColumn";
             this.ReviewerColumn.Width = 125;

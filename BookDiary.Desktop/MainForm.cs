@@ -18,6 +18,7 @@ namespace BookDiary.Desktop
         public MainForm()
         {
             InitializeComponent();
+            welcomeLabel.Text = $"Welcome, {Properties.Settings.Default.Username}";
         }
 
         private void UserManagementToolStripMenuItem_Click(object sender, EventArgs e)

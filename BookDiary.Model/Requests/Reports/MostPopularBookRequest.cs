@@ -6,5 +6,6 @@ namespace BookDiary.Model.Requests.Reports
     {
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
+        public int? GenreId { get; set; }
     }
 }

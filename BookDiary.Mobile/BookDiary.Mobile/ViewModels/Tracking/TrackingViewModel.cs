@@ -19,6 +19,9 @@ namespace BookDiary.Mobile.ViewModels.Tracking
         public TrackingViewModel(Model.Models.UserBook userBook = null)
         {
             UserBook = userBook;
+
+            Finish = userBook.FinishedReadingOn == null;
+
             InitCommand = new Command(async () => await Init());
             AddPagesCommand = new Command(async () => await AddPages());
             MarkAsCompletedCommand = new Command(async () => await MarkAsCompleted());
@@ -49,6 +52,13 @@ namespace BookDiary.Mobile.ViewModels.Tracking
         {
             get { return _totalPagesRead; }
             set { SetProperty(ref _totalPagesRead, value); }
+        }
+
+        private bool _finished;
+        public bool Finish
+        {
+            get { return _finished; }
+            set { SetProperty(ref _finished, value); }
         }
 
         private double _percentage = default;

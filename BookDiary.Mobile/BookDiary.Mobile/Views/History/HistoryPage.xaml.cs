@@ -1,4 +1,8 @@
-﻿using BookDiary.Mobile.ViewModels.History;
+﻿using BookDiary.Mobile.ViewModels.Books;
+using BookDiary.Mobile.ViewModels.History;
+using BookDiary.Mobile.ViewModels.Tracking;
+using BookDiary.Mobile.Views.Books;
+using BookDiary.Mobile.Views.Tracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +28,16 @@ namespace BookDiary.Mobile.Views.History
         {
             base.OnAppearing();
             await this.viewModel.Init();
+        }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedItem = e.SelectedItem as Model.Models.UserBook;
+
+            if (selectedItem == null)
+                return;
+
+            await Navigation.PushAsync(new TrackingPage(new TrackingViewModel(selectedItem)));
         }
     }
 }

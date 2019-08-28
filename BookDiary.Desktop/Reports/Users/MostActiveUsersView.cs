@@ -19,7 +19,6 @@ namespace BookDiary.Desktop.Reports.Users
         {
             var rds = new ReportDataSource("dsUsers", Users);
             this.reportViewer1.LocalReport.DataSources.Add(rds);
-            //this.genresReportViewer.LocalReport.SetParameters(new ReportParameter("Ponuda", Ponuda));
             this.reportViewer1.RefreshReport();
         }
     }

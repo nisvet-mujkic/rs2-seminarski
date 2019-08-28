@@ -123,7 +123,6 @@
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(163, 22);
             this.confirmPasswordTextBox.TabIndex = 11;
             this.confirmPasswordTextBox.UseSystemPasswordChar = true;
-            this.confirmPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.ConfirmPasswordTextBox_Validating);
             // 
             // label5
             // 
@@ -141,7 +140,6 @@
             this.passwordTextBox.Size = new System.Drawing.Size(163, 22);
             this.passwordTextBox.TabIndex = 9;
             this.passwordTextBox.UseSystemPasswordChar = true;
-            this.passwordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.PasswordTextBox_Validating);
             // 
             // label6
             // 

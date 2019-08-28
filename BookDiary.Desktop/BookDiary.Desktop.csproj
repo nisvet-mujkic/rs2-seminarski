@@ -200,8 +200,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\Books\MostPopularBooks.rdlc" />
     <EmbeddedResource Include="Reports\Books\MostPopularBooksFilter.resx">
       <DependentUpon>MostPopularBooksFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Books\MostPopularBooksView.resx">
+      <DependentUpon>MostPopularBooksView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Genres\GenreComparison.rdlc" />
     <EmbeddedResource Include="Reports\Genres\GenreComparisonViewReport.resx">

@@ -12,6 +12,7 @@ namespace BookDiary.Desktop.Reviews
         {
             InitializeComponent();
             _reviewId = reviewId;
+            approveReviewCheckbox.Visible = Properties.Settings.Default.IsAdmin ? true : false;
         }
 
         private async void ReviewDetailsForm_Load(object sender, System.EventArgs e)

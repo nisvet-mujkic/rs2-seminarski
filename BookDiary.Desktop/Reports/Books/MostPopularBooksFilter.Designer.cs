@@ -33,6 +33,8 @@
             this.toDtp = new System.Windows.Forms.DateTimePicker();
             this.fromDtp = new System.Windows.Forms.DateTimePicker();
             this.showReportBtn = new System.Windows.Forms.Button();
+            this.genresComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -71,7 +73,7 @@
             // 
             // showReportBtn
             // 
-            this.showReportBtn.Location = new System.Drawing.Point(331, 54);
+            this.showReportBtn.Location = new System.Drawing.Point(493, 54);
             this.showReportBtn.Name = "showReportBtn";
             this.showReportBtn.Size = new System.Drawing.Size(128, 23);
             this.showReportBtn.TabIndex = 10;
@@ -79,11 +81,30 @@
             this.showReportBtn.UseVisualStyleBackColor = true;
             this.showReportBtn.Click += new System.EventHandler(this.ShowReportBtn_Click);
             // 
+            // genresComboBox
+            // 
+            this.genresComboBox.FormattingEnabled = true;
+            this.genresComboBox.Location = new System.Drawing.Point(318, 54);
+            this.genresComboBox.Name = "genresComboBox";
+            this.genresComboBox.Size = new System.Drawing.Size(135, 24);
+            this.genresComboBox.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(315, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Genre";
+            // 
             // MostPopularBooksFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(485, 111);
+            this.ClientSize = new System.Drawing.Size(658, 125);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.genresComboBox);
             this.Controls.Add(this.showReportBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -91,6 +112,7 @@
             this.Controls.Add(this.fromDtp);
             this.Name = "MostPopularBooksFilter";
             this.Text = "MostPopularBooksFilter";
+            this.Load += new System.EventHandler(this.MostPopularBooksFilter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +125,7 @@
         private System.Windows.Forms.DateTimePicker toDtp;
         private System.Windows.Forms.DateTimePicker fromDtp;
         private System.Windows.Forms.Button showReportBtn;
+        private System.Windows.Forms.ComboBox genresComboBox;
+        private System.Windows.Forms.Label label3;
     }
 }

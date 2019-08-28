@@ -25,7 +25,6 @@
                 <Entry IsPassword="True" Text="{Binding Password}"></Entry>
                 <Button Margin="0, 10, 0, 0" Text="Login" Command="{Binding LoginCommand}"></Button>
                 <Label IsVisible="{Binding IsBusy}" Text="Working..." />
-                <Button Text="Register" Clicked="Button_Clicked"></Button>
             </StackLayout>
             
 

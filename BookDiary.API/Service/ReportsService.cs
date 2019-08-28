@@ -29,7 +29,7 @@ namespace BookDiary.API.Service
 
         public async Task<List<MostPopularBook>> GetMostPopularBooks(MostPopularBookRequest request)
         {
-            return await _context.Query<MostPopularBook>().AsNoTracking().FromSql("SP_GetMostPopularBooksByDate @p0, @p1", request.From, request.To).ToListAsync();
+            return await _context.Query<MostPopularBook>().AsNoTracking().FromSql("SP_GetMostPopularBooksByDate @p0, @p1, @p2", request.From, request.To, request.GenreId).ToListAsync();
         }
     }
 }

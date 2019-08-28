@@ -20,6 +20,7 @@ namespace BookDiary.Desktop.Books
         {
             var quoteDetails = new QuoteDetailsForm();
             quoteDetails.Show();
+            openQuoteFormBtn.Visible = Properties.Settings.Default.IsAdmin ? true : false;
         }
 
         private async void ShowQuotesBtn_Click(object sender, EventArgs e)
@@ -29,14 +30,14 @@ namespace BookDiary.Desktop.Books
                 IsBooksLoadingEnabled = true
             };
 
-            var bookIdObj = booksComboBox.SelectedValue;
+            var bookIdObj = booksComboBox.SelectedValue ?? 0;
 
             if (int.TryParse(bookIdObj.ToString(), out int bookId))
             {
                 searchRequest.BookId = bookId;
             }
 
-            var authorIdObj = authorsComboBox.SelectedValue;
+            var authorIdObj = authorsComboBox.SelectedValue ?? 0;
 
             if (int.TryParse(authorIdObj.ToString(), out int authorId))
             {
@@ -50,11 +51,18 @@ namespace BookDiary.Desktop.Books
 
         private void QuotesDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var quoteId = int.Parse(quotesDataGrid.SelectedRows[0].Cells[0].Value.ToString());
-            var bookId = int.Parse(quotesDataGrid.SelectedRows[0].Cells[1].Value.ToString());
+            try
+            {
+                var quoteId = int.Parse(quotesDataGrid.SelectedRows[0].Cells[0].Value.ToString());
+                var bookId = int.Parse(quotesDataGrid.SelectedRows[0].Cells[1].Value.ToString());
 
-            var quotesDetails = new QuoteDetailsForm(quoteId, bookId);
-            quotesDetails.Show();
+                var quotesDetails = new QuoteDetailsForm(quoteId, bookId);
+                quotesDetails.Show();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private async void QuotesForm_Load(object sender, EventArgs e)

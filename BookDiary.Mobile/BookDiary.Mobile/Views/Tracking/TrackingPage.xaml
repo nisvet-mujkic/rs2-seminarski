@@ -57,7 +57,7 @@
             <BoxView HeightRequest="2" Color="LightBlue"></BoxView>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button Text="Finish Reading" Clicked="Button_Clicked_1" WidthRequest="200" BackgroundColor="LightGray" ></Button>
+                <Button IsVisible="{Binding Finish}" Text="Finish Reading" Clicked="Button_Clicked_1" WidthRequest="200" BackgroundColor="LightGray" ></Button>
                 <Button Text="Review" Clicked="Button_Clicked_2" WidthRequest="200" BackgroundColor="LightGray" ></Button>
             </StackLayout>
 

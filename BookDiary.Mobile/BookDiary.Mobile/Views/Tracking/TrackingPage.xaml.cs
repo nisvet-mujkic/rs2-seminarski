@@ -1,5 +1,6 @@
 ﻿using BookDiary.Mobile.ViewModels.Review;
 using BookDiary.Mobile.ViewModels.Tracking;
+using BookDiary.Mobile.Views.Books;
 using BookDiary.Mobile.Views.History;
 using BookDiary.Mobile.Views.ReadingList;
 using BookDiary.Mobile.Views.Review;
@@ -35,7 +36,7 @@ namespace BookDiary.Mobile.Views.Tracking
         private async void Button_Clicked_1(object sender, System.EventArgs e)
         {
             await this.viewModel.MarkAsCompleted();
-            await Navigation.PushAsync(new HistoryPage());
+            await Navigation.PushAsync(new BooksPage());
         }
 
         private async void Button_Clicked_2(object sender, System.EventArgs e)

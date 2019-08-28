@@ -40,7 +40,6 @@ namespace BookDiary.Mobile.Services
                 }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
-                //return await url.GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)
             {

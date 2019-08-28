@@ -9,7 +9,6 @@ namespace BookDiary.Mobile.ViewModels.Registration
 {
     public class RegistrationViewModel : BaseViewModel
     {
-        private readonly ApiService _rolesService = new ApiService("Roles");
         private readonly ApiService _userService = new ApiService("Users");
         public RegistrationViewModel()
         {

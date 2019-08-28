@@ -12,6 +12,7 @@ namespace BookDiary.Desktop.Users
         public UsersForm()
         {
             InitializeComponent();
+            addUserBtn.Visible = Properties.Settings.Default.IsAdmin ? true : false;
         }
 
         private async void UsersForm_Load(object sender, EventArgs e)
@@ -45,10 +46,18 @@ namespace BookDiary.Desktop.Users
 
         private void AllUsersDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var userId = int.Parse(allUsersDataGrid.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                var userId = int.Parse(allUsersDataGrid.SelectedRows[0].Cells[0].Value.ToString());
 
-            var userDetailsForm = new UserDetailsForm(userId);
-            userDetailsForm.Show();
+                var userDetailsForm = new UserDetailsForm(userId);
+                userDetailsForm.Show();
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
     }
 }

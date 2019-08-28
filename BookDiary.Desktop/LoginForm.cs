@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BookDiary.Model.Requests.UserRoles;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookDiary.Desktop
@@ -7,6 +10,7 @@ namespace BookDiary.Desktop
     public partial class LoginForm : Form
     {
         private readonly ApiService _usersService = new ApiService("Users");
+        private readonly ApiService _userRolesService = new ApiService("UserRoles");
         public LoginForm()
         {
             InitializeComponent();
@@ -32,16 +36,36 @@ namespace BookDiary.Desktop
             }
         }
 
-        private void SetLoggedUser(List<Model.Models.User> users)
+        private async Task<string> GetUserRoles(Model.Models.User user)
         {
-            users.ForEach(user =>
+            var searchRequest = new UserRolesSearchRequest()
+            {
+                IsRolesLoadingEnabled = true,
+                IsUsersLoadingEnabled = true,
+                UserId = user.Id
+            };
+
+            var roles = await _userRolesService.Get<List<Model.Models.UserRole>>(searchRequest);
+            var rolesString = roles.Select(x => x.Role.Name);
+            return string.Join(", ", rolesString);
+        }
+
+        private async Task SetLoggedUser(List<Model.Models.User> users)
+        {
+            var storedUser = new Model.Models.User();
+            users.ForEach( user =>
             {
                 if (ApiService.Username == user.Username)
                 {
+                    storedUser = user;
                     Properties.Settings.Default.Username = ApiService.Username;
                     Properties.Settings.Default.UserId = user.Id;
+                    
                 }
             });
+
+            var userRoles = await GetUserRoles(storedUser);
+            Properties.Settings.Default.IsAdmin = userRoles.Contains("Admin") ? true : false;
         }
     }
 }
