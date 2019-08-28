@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookDiary.Model.Models
 {
@@ -11,8 +12,9 @@ namespace BookDiary.Model.Models
         public string Email { get; set; }
         [Required]
         public string Username { get; set; }
-        public string PasswordHash { get; set; }
-        public string PasswordSalt { get; set; }
+
+        public ICollection<UserRole> UserRoles { get; set; }
+
         public override string ToString()
         {
             return $"{FirstName} {LastName}";

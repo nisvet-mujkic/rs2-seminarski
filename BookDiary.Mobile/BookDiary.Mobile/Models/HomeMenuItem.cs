@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BookDiary.Mobile.Models
+﻿namespace BookDiary.Mobile.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About
+        Books,
+        CurrentlyReading,
+        Trending,
+        History
     }
     public class HomeMenuItem
     {

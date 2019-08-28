@@ -13,6 +13,7 @@ namespace BookDiary.Desktop.Books
         public BooksForm()
         {
             InitializeComponent();
+            addBookBtn.Visible = Properties.Settings.Default.IsAdmin ? true : false;
         }
 
         private void AddBookBtn_Click(object sender, System.EventArgs e)
@@ -57,7 +58,7 @@ namespace BookDiary.Desktop.Books
                 searchRequest.GenreId = genreId;
             }
 
-            var authorIdObj = bookGenresComboBox.SelectedValue;
+            var authorIdObj = bookAuthorsComboBox.SelectedValue;
 
             if (int.TryParse(authorIdObj.ToString(), out int authorId))
             {
@@ -87,10 +88,17 @@ namespace BookDiary.Desktop.Books
 
         private void BooksDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var bookId = int.Parse(booksDataGridView.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                var bookId = int.Parse(booksDataGridView.SelectedRows[0].Cells[0].Value.ToString());
 
-            var bookDetailsForm = new BookDetailsForm(bookId);
-            bookDetailsForm.Show();
+                var bookDetailsForm = new BookDetailsForm(bookId);
+                bookDetailsForm.Show();
+            }
+            catch (System.Exception)
+            {
+
+            }
         }
     }
 }

@@ -47,6 +47,8 @@
             this.bookDetailsErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.totalPagesNumeric = new System.Windows.Forms.NumericUpDown();
             this.publishedInNumeric = new System.Windows.Forms.NumericUpDown();
+            this.subjectsTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bookPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDetailsErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.totalPagesNumeric)).BeginInit();
@@ -115,7 +117,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 321);
+            this.label4.Location = new System.Drawing.Point(34, 391);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 17);
             this.label4.TabIndex = 8;
@@ -124,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(162, 321);
+            this.label5.Location = new System.Drawing.Point(162, 391);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 17);
             this.label5.TabIndex = 10;
@@ -133,7 +135,7 @@
             // archivedCheckBox
             // 
             this.archivedCheckBox.AutoSize = true;
-            this.archivedCheckBox.Location = new System.Drawing.Point(37, 383);
+            this.archivedCheckBox.Location = new System.Drawing.Point(37, 464);
             this.archivedCheckBox.Name = "archivedCheckBox";
             this.archivedCheckBox.Size = new System.Drawing.Size(146, 21);
             this.archivedCheckBox.TabIndex = 11;
@@ -142,7 +144,7 @@
             // 
             // addPictureBtn
             // 
-            this.addPictureBtn.Location = new System.Drawing.Point(315, 340);
+            this.addPictureBtn.Location = new System.Drawing.Point(315, 348);
             this.addPictureBtn.Name = "addPictureBtn";
             this.addPictureBtn.Size = new System.Drawing.Size(185, 23);
             this.addPictureBtn.TabIndex = 12;
@@ -152,7 +154,7 @@
             // 
             // pictureTextBox
             // 
-            this.pictureTextBox.Location = new System.Drawing.Point(37, 278);
+            this.pictureTextBox.Location = new System.Drawing.Point(37, 348);
             this.pictureTextBox.Name = "pictureTextBox";
             this.pictureTextBox.Size = new System.Drawing.Size(228, 22);
             this.pictureTextBox.TabIndex = 13;
@@ -160,7 +162,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 258);
+            this.label6.Location = new System.Drawing.Point(34, 328);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 17);
             this.label6.TabIndex = 14;
@@ -168,7 +170,7 @@
             // 
             // finishBookBtn
             // 
-            this.finishBookBtn.Location = new System.Drawing.Point(398, 414);
+            this.finishBookBtn.Location = new System.Drawing.Point(398, 451);
             this.finishBookBtn.Name = "finishBookBtn";
             this.finishBookBtn.Size = new System.Drawing.Size(102, 34);
             this.finishBookBtn.TabIndex = 15;
@@ -186,7 +188,7 @@
             // 
             // totalPagesNumeric
             // 
-            this.totalPagesNumeric.Location = new System.Drawing.Point(39, 342);
+            this.totalPagesNumeric.Location = new System.Drawing.Point(39, 412);
             this.totalPagesNumeric.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -201,14 +203,14 @@
             this.totalPagesNumeric.Size = new System.Drawing.Size(102, 22);
             this.totalPagesNumeric.TabIndex = 16;
             this.totalPagesNumeric.Value = new decimal(new int[] {
-            1,
+            100,
             0,
             0,
             0});
             // 
             // publishedInNumeric
             // 
-            this.publishedInNumeric.Location = new System.Drawing.Point(165, 341);
+            this.publishedInNumeric.Location = new System.Drawing.Point(165, 411);
             this.publishedInNumeric.Maximum = new decimal(new int[] {
             2050,
             0,
@@ -228,11 +230,30 @@
             0,
             0});
             // 
+            // subjectsTextBox
+            // 
+            this.subjectsTextBox.Location = new System.Drawing.Point(37, 278);
+            this.subjectsTextBox.Name = "subjectsTextBox";
+            this.subjectsTextBox.Size = new System.Drawing.Size(228, 22);
+            this.subjectsTextBox.TabIndex = 18;
+            this.subjectsTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SubjectsTextBox_Validating);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 258);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 17);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Subjects";
+            // 
             // BookDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 478);
+            this.ClientSize = new System.Drawing.Size(539, 515);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.subjectsTextBox);
             this.Controls.Add(this.publishedInNumeric);
             this.Controls.Add(this.totalPagesNumeric);
             this.Controls.Add(this.finishBookBtn);
@@ -281,5 +302,7 @@
         private System.Windows.Forms.ErrorProvider bookDetailsErrorProvider;
         private System.Windows.Forms.NumericUpDown publishedInNumeric;
         private System.Windows.Forms.NumericUpDown totalPagesNumeric;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox subjectsTextBox;
     }
 }

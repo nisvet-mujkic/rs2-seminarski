@@ -3,6 +3,7 @@
     public class BooksUpsertRequest
     {
         public string Name { get; set; }
+        public string Subject { get; set; }
         public int AuthorId { get; set; }
         public int GenreId { get; set; }
         public byte[] CoverImage { get; set; }

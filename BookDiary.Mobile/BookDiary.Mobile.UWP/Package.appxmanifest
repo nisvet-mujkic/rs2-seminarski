@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="BookDiary.Mobile.UWP.App">
       <uap:VisualElements
-        DisplayName="BookDiary.Mobile.UWP"
+        DisplayName="Book Diary"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="BookDiary.Mobile.UWP"

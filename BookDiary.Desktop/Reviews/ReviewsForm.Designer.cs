@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.reviewsDataGrid = new System.Windows.Forms.DataGridView();
-            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReviewerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ratingColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SummaryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.approvedCheckBox = new System.Windows.Forms.CheckBox();
             this.pendingCheckBox = new System.Windows.Forms.CheckBox();
             this.showReviewsButton = new System.Windows.Forms.Button();
@@ -44,6 +37,12 @@
             this.toDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.rejectedReviewsCheckBox = new System.Windows.Forms.CheckBox();
+            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReviewerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ratingColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SummaryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.reviewsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,74 +53,16 @@
             this.IdColumn,
             this.ReviewerColumn,
             this.DateColumn,
-            this.BookColumn,
             this.ratingColumn,
             this.SummaryColumn,
             this.Status});
-            this.reviewsDataGrid.Location = new System.Drawing.Point(32, 140);
+            this.reviewsDataGrid.Location = new System.Drawing.Point(12, 140);
             this.reviewsDataGrid.Name = "reviewsDataGrid";
             this.reviewsDataGrid.RowHeadersWidth = 51;
             this.reviewsDataGrid.RowTemplate.Height = 24;
-            this.reviewsDataGrid.Size = new System.Drawing.Size(1091, 413);
+            this.reviewsDataGrid.Size = new System.Drawing.Size(969, 388);
             this.reviewsDataGrid.TabIndex = 0;
             this.reviewsDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReviewsDataGrid_CellDoubleClick);
-            // 
-            // IdColumn
-            // 
-            this.IdColumn.DataPropertyName = "Id";
-            this.IdColumn.HeaderText = "ReviewId";
-            this.IdColumn.MinimumWidth = 6;
-            this.IdColumn.Name = "IdColumn";
-            this.IdColumn.Visible = false;
-            this.IdColumn.Width = 125;
-            // 
-            // ReviewerColumn
-            // 
-            this.ReviewerColumn.DataPropertyName = "User";
-            this.ReviewerColumn.HeaderText = "Reviewer";
-            this.ReviewerColumn.MinimumWidth = 6;
-            this.ReviewerColumn.Name = "ReviewerColumn";
-            this.ReviewerColumn.Width = 125;
-            // 
-            // DateColumn
-            // 
-            this.DateColumn.DataPropertyName = "CreatedAt";
-            this.DateColumn.HeaderText = "Date";
-            this.DateColumn.MinimumWidth = 6;
-            this.DateColumn.Name = "DateColumn";
-            this.DateColumn.Width = 125;
-            // 
-            // BookColumn
-            // 
-            this.BookColumn.DataPropertyName = "Book";
-            this.BookColumn.HeaderText = "Book";
-            this.BookColumn.MinimumWidth = 6;
-            this.BookColumn.Name = "BookColumn";
-            this.BookColumn.Width = 125;
-            // 
-            // ratingColumn
-            // 
-            this.ratingColumn.DataPropertyName = "Rating";
-            this.ratingColumn.HeaderText = "Rating";
-            this.ratingColumn.MinimumWidth = 6;
-            this.ratingColumn.Name = "ratingColumn";
-            this.ratingColumn.Width = 125;
-            // 
-            // SummaryColumn
-            // 
-            this.SummaryColumn.DataPropertyName = "Summary";
-            this.SummaryColumn.HeaderText = "Summary";
-            this.SummaryColumn.MinimumWidth = 6;
-            this.SummaryColumn.Name = "SummaryColumn";
-            this.SummaryColumn.Width = 125;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Approved";
-            this.Status.HeaderText = "Approved";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            this.Status.Width = 125;
             // 
             // approvedCheckBox
             // 
@@ -145,7 +86,7 @@
             // 
             // showReviewsButton
             // 
-            this.showReviewsButton.Location = new System.Drawing.Point(1001, 36);
+            this.showReviewsButton.Location = new System.Drawing.Point(859, 36);
             this.showReviewsButton.Name = "showReviewsButton";
             this.showReviewsButton.Size = new System.Drawing.Size(122, 36);
             this.showReviewsButton.TabIndex = 3;
@@ -197,11 +138,60 @@
             this.rejectedReviewsCheckBox.Text = "Show rejected reviews";
             this.rejectedReviewsCheckBox.UseVisualStyleBackColor = true;
             // 
+            // IdColumn
+            // 
+            this.IdColumn.DataPropertyName = "UserBookId";
+            this.IdColumn.HeaderText = "ReviewId";
+            this.IdColumn.MinimumWidth = 6;
+            this.IdColumn.Name = "IdColumn";
+            this.IdColumn.Visible = false;
+            this.IdColumn.Width = 125;
+            // 
+            // ReviewerColumn
+            // 
+            this.ReviewerColumn.DataPropertyName = "UserBook";
+            this.ReviewerColumn.HeaderText = "Details";
+            this.ReviewerColumn.MinimumWidth = 6;
+            this.ReviewerColumn.Name = "ReviewerColumn";
+            this.ReviewerColumn.Width = 125;
+            // 
+            // DateColumn
+            // 
+            this.DateColumn.DataPropertyName = "CreatedAt";
+            this.DateColumn.HeaderText = "Date";
+            this.DateColumn.MinimumWidth = 6;
+            this.DateColumn.Name = "DateColumn";
+            this.DateColumn.Width = 125;
+            // 
+            // ratingColumn
+            // 
+            this.ratingColumn.DataPropertyName = "Rating";
+            this.ratingColumn.HeaderText = "Rating";
+            this.ratingColumn.MinimumWidth = 6;
+            this.ratingColumn.Name = "ratingColumn";
+            this.ratingColumn.Width = 125;
+            // 
+            // SummaryColumn
+            // 
+            this.SummaryColumn.DataPropertyName = "Summary";
+            this.SummaryColumn.HeaderText = "Summary";
+            this.SummaryColumn.MinimumWidth = 6;
+            this.SummaryColumn.Name = "SummaryColumn";
+            this.SummaryColumn.Width = 125;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Approved";
+            this.Status.HeaderText = "Approved";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            this.Status.Width = 125;
+            // 
             // ReviewsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 581);
+            this.ClientSize = new System.Drawing.Size(1025, 567);
             this.Controls.Add(this.rejectedReviewsCheckBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.toDatePicker);
@@ -229,13 +219,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker toDatePicker;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox rejectedReviewsCheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReviewerColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ratingColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SummaryColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Status;
-        private System.Windows.Forms.CheckBox rejectedReviewsCheckBox;
     }
 }

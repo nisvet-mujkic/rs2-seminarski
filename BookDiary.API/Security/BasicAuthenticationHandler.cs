@@ -1,4 +1,5 @@
-﻿using BookDiary.API.Service;
+﻿using BookDiary.API.IService;
+using BookDiary.API.Service;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -15,20 +16,21 @@ namespace BookDiary.API.Security
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        private readonly UsersService _userService;
+        private readonly IUsersService _userService;
 
         public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock,
-            UsersService userService)
+            IUsersService userService)
             : base(options, logger, encoder, clock)
         {
             _userService = userService;
         }
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
+
         {
             if (!Request.Headers.ContainsKey("Authorization"))
                 return AuthenticateResult.Fail("Missing Authorization Header");
@@ -41,7 +43,7 @@ namespace BookDiary.API.Security
                 var credentials = Encoding.UTF8.GetString(credentialBytes).Split(':');
                 var username = credentials[0];
                 var password = credentials[1];
-                user = _userService.Authenticate(username, password);
+                user = await _userService.Authenticate(username, password);
             }
             catch
             {
@@ -56,10 +58,10 @@ namespace BookDiary.API.Security
                 new Claim(ClaimTypes.Name, user.FirstName),
             };
 
-            //foreach (var role in user.KorisniciUloge)
-            //{
-            //    claims.Add(new Claim(ClaimTypes.Role, role.Uloga.Naziv));
-            //}
+            foreach (var role in user.UserRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
+            }
 
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);

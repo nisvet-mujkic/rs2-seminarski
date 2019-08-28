@@ -18,5 +18,6 @@ namespace BookDiary.Infrastructure.Entities
         public int PagesInTotal { get; set; }
         public int YearPublished { get; set; }
         public byte[] CoverImage { get; set; }
+        public string Subject { get; set; }
     }
 }

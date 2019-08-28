@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
+using BookDiary.API.Exceptions;
+using BookDiary.API.IService;
 using BookDiary.Infrastructure.Data;
+using BookDiary.Infrastructure.Results;
 using BookDiary.Model.Models;
+using BookDiary.Model.Requests.Reports;
 using BookDiary.Model.Requests.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,15 +16,36 @@ using System.Threading.Tasks;
 
 namespace BookDiary.API.Service
 {
-    public class UsersService : CrudService<Model.Models.User, UsersSearchRequest, Infrastructure.Entities.User, UsersUpsertRequest, UsersUpsertRequest>
+    public class UsersService : IUsersService
     {
-        public UsersService(BookDiaryContext context, IMapper mapper) : base(context, mapper)
+        private readonly BookDiaryContext _context;
+        private readonly IMapper _mapper;
+
+        public UsersService(BookDiaryContext context, IMapper mapper)
         {
+            _context = context;
+            _mapper = mapper;
         }
 
-        public override async Task<IEnumerable<User>> Get(UsersSearchRequest search)
+        public async Task<User> Authenticate(string username, string password)
         {
-            var query = _context.Set<Infrastructure.Entities.User>().AsQueryable();
+            var user = await _context.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).FirstOrDefaultAsync(x => x.Username == username);
+
+            if (user != null)
+            {
+                var newHash = GenerateHash(user.PasswordSalt, password);
+
+                if (newHash == user.PasswordHash)
+                {
+                    return _mapper.Map<Model.Models.User>(user);
+                }
+            }
+            return null;
+        }
+
+        public async Task<List<User>> Get(UsersSearchRequest search)
+        {
+            var query = _context.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).AsQueryable();
 
             if (search.ShowDisabledUsers)
             {
@@ -30,23 +55,34 @@ namespace BookDiary.API.Service
             if (!string.IsNullOrEmpty(search.SearchTerm))
             {
                 string term = search.SearchTerm;
-                query = query.Where(user => (user.FirstName.StartsWith(term) || user.FirstName.Contains(term)) || 
-                                (user.LastName.StartsWith(term) || user.LastName.Contains(term)) || 
-                                (user.Email.StartsWith(term) || user.Email.Contains(term)) || 
+                query = query.Where(user => (user.FirstName.StartsWith(term) || user.FirstName.Contains(term)) ||
+                                (user.LastName.StartsWith(term) || user.LastName.Contains(term)) ||
+                                (user.Email.StartsWith(term) || user.Email.Contains(term)) ||
                                 (user.Username.StartsWith(term) || user.Username.Contains(term)));
             }
 
             var entities = await query.ToListAsync();
 
-            return _mapper.Map<IEnumerable<Model.Models.User>>(entities);
+            return _mapper.Map<List<Model.Models.User>>(entities);
         }
 
-        public override async Task<User> Insert(UsersUpsertRequest request)
+        public async Task<User> GetById(int id)
+        {
+            var query = _context.Users.AsQueryable();
+
+            query = query.Include(x => x.UserRoles).ThenInclude(x => x.Role);
+
+            var entity = await query.FirstOrDefaultAsync(x => x.Id == id);
+
+            return _mapper.Map<Model.Models.User>(entity);
+        }
+
+        public async Task<User> Insert(UsersUpsertRequest request)
         {
             var entity = _mapper.Map<Infrastructure.Entities.User>(request);
 
             if (request.Password != request.ConfirmPassword)
-                throw new Exception("Passwords do not match");
+                throw new UserException("Passwords do not match");
 
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
@@ -68,7 +104,7 @@ namespace BookDiary.API.Service
             return _mapper.Map<Model.Models.User>(entity);
         }
 
-        public override async Task<User> Update(int id, UsersUpsertRequest request)
+        public async Task<User> Update(int id, UsersUpsertRequest request)
         {
             var entity = _context.Users.Find(id);
             _context.Users.Attach(entity);
@@ -98,22 +134,6 @@ namespace BookDiary.API.Service
             //await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.Models.User>(entity);
-        }
-
-        public Model.Models.User Authenticate(string username, string pass)
-        {
-            var user = _context.Users.Include("UserRoles.Role").FirstOrDefault(x => x.Username == username);
-
-            if (user != null)
-            {
-                var newHash = GenerateHash(user.PasswordSalt, pass);
-
-                if (newHash == user.PasswordHash)
-                {
-                    return _mapper.Map<Model.Models.User>(user);
-                }
-            }
-            return null;
         }
 
         public static string GenerateSalt()

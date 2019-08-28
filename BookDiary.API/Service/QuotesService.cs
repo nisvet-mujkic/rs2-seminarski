@@ -19,13 +19,16 @@ namespace BookDiary.API.Service
         {
             var query = _context.Set<Infrastructure.Entities.Quote>().AsQueryable();
 
-            if (search?.BookId.HasValue == true)
+            if (search?.BookId.HasValue == true && search.BookId != 0)
                 query = query.Where(x => x.BookId == search.BookId);
 
-            if (search?.IsBooksLoadingEnabled == true)
+            if (search?.AuthorId.HasValue == true && search.AuthorId != 0)
+                query = query.Where(x => x.Book.AuthorId == search.AuthorId);
+
+            if (search?.IsBooksLoadingEnabled == true )
                 query = query.Include(x => x.Book);
 
-            query = query.OrderBy(x => x.QuoteText);
+            query = query.OrderByDescending(x => x.CreatedAt);
 
             var entities = await query.ToListAsync();
 

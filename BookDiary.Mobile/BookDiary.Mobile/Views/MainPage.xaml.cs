@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BookDiary.Mobile.Models;
+using BookDiary.Mobile.Views.Books;
+using BookDiary.Mobile.Views.History;
+using BookDiary.Mobile.Views.ReadingList;
+using BookDiary.Mobile.Views.Trending;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using BookDiary.Mobile.Models;
 
 namespace BookDiary.Mobile.Views
 {
@@ -21,7 +22,6 @@ namespace BookDiary.Mobile.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,11 +30,17 @@ namespace BookDiary.Mobile.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    case (int)MenuItemType.Books:
+                        MenuPages.Add(id, new NavigationPage(new BooksPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)MenuItemType.CurrentlyReading:
+                        MenuPages.Add(id, new NavigationPage(new ReadingListPage()));
+                        break;
+                    case (int)MenuItemType.Trending:
+                        MenuPages.Add(id, new NavigationPage(new TrendingPage()));
+                        break;
+                    case (int)MenuItemType.History:
+                        MenuPages.Add(id, new NavigationPage(new HistoryPage()));
                         break;
                 }
             }

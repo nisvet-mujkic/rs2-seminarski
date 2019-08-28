@@ -1,8 +1,11 @@
 ﻿using BookDiary.Mobile.Services;
 using BookDiary.Mobile.Views;
+using BookDiary.Mobile.Views.Quotes;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace BookDiary.Mobile.ViewModels.Login
@@ -13,7 +16,7 @@ namespace BookDiary.Mobile.ViewModels.Login
 
         public LoginViewModel()
         {
-            LoginCommand = new Command(async () => await Login()); ;
+            LoginCommand = new Command(async () => await Login());
         }
 
         string _username = string.Empty;
@@ -41,13 +44,31 @@ namespace BookDiary.Mobile.ViewModels.Login
 
             try
             {
-                await _usersService.Get<dynamic>(null);
-                Application.Current.MainPage = new MainPage();
+                var users = await _usersService.Get<List<Model.Models.User>>(null);
+
+                SetLoggedUser(users);
+
+                Application.Current.MainPage = new QuotePage();
             }
             catch (Exception ex)
             {
 
             }
+        }
+
+        private void SetLoggedUser(List<Model.Models.User> users)
+        {
+            users.ForEach(user =>
+            {
+                if (ApiService.Username == user.Username)
+                {
+                    if (Application.Current.Properties.ContainsKey("id"))
+                    {
+                        Application.Current.Properties.Clear();
+                        Application.Current.Properties.Add("id", user.Id);
+                    }
+                }
+            });
         }
     }
 }

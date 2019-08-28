@@ -58,6 +58,8 @@ namespace BookDiary.Infrastructure.Migrations
 
                     b.Property<int>("PagesInTotal");
 
+                    b.Property<string>("Subject");
+
                     b.Property<int>("YearPublished");
 
                     b.HasKey("Id");
@@ -132,15 +134,11 @@ namespace BookDiary.Infrastructure.Migrations
 
             modelBuilder.Entity("BookDiary.Infrastructure.Entities.Review", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("UserBookId");
 
                     b.Property<bool?>("Approved");
 
                     b.Property<bool>("Archived");
-
-                    b.Property<int>("BookId");
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -150,13 +148,7 @@ namespace BookDiary.Infrastructure.Migrations
 
                     b.Property<string>("Summary");
 
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("UserId");
+                    b.HasKey("UserBookId");
 
                     b.ToTable("Reviews");
                 });
@@ -289,14 +281,9 @@ namespace BookDiary.Infrastructure.Migrations
 
             modelBuilder.Entity("BookDiary.Infrastructure.Entities.Review", b =>
                 {
-                    b.HasOne("BookDiary.Infrastructure.Entities.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BookDiary.Infrastructure.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                    b.HasOne("BookDiary.Infrastructure.Entities.UserBook", "UserBook")
+                        .WithOne("Review")
+                        .HasForeignKey("BookDiary.Infrastructure.Entities.Review", "UserBookId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -321,7 +308,7 @@ namespace BookDiary.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookDiary.Infrastructure.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

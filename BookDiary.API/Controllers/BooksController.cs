@@ -9,6 +9,7 @@ namespace BookDiary.API.Controllers
     {
         public BooksController(ICrudService<Book, BooksSearchRequest, BooksUpsertRequest, BooksUpsertRequest> service) : base(service)
         {
+            
         }
     }
 }

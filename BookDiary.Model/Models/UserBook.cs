@@ -16,5 +16,10 @@ namespace BookDiary.Model.Models
         public Book Book { get; set; }
         public DateTime StartedReadingOn { get; set; }
         public DateTime? FinishedReadingOn { get; set; }
+
+        public override string ToString()
+        {
+            return $"{User.Username} - {Book.Name}";
+        }
     }
 }

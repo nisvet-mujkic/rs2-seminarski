@@ -7,23 +7,25 @@ namespace BookDiary.Desktop.Reviews
     {
         private readonly ApiService _reviewService = new ApiService("Reviews");
         private int? _reviewId = null;
+        private Model.Models.Review Review = new Model.Models.Review();
         public ReviewDetailsForm(int? reviewId = null)
         {
             InitializeComponent();
             _reviewId = reviewId;
+            approveReviewCheckbox.Visible = Properties.Settings.Default.IsAdmin ? true : false;
         }
 
         private async void ReviewDetailsForm_Load(object sender, System.EventArgs e)
         {
             if (_reviewId.HasValue)
             {
-                var review = await _reviewService.GetById<Model.Models.Review>(_reviewId);
+                Review = await _reviewService.GetById<Model.Models.Review>(_reviewId);
 
-                reviewerTxt.Text = review.User.ToString();
-                reviewDateTxt.Text = review.CreatedAt.ToString("MM/dd/yyyy");
-                ratingTxt.Text = review.Rating.ToString();
-                reviewText.Text = review.Summary;
-                approveReviewCheckbox.Checked = review.Approved == null ? false : review.Approved.Value;
+                reviewerTxt.Text = Review.UserBook.User.ToString();
+                reviewDateTxt.Text = Review.CreatedAt.ToString("MM/dd/yyyy");
+                ratingTxt.Text = Review.Rating.ToString();
+                reviewText.Text = Review.Summary;
+                approveReviewCheckbox.Checked = Review.Approved == null ? false : Review.Approved.Value;
             }
         }
 
@@ -31,7 +33,12 @@ namespace BookDiary.Desktop.Reviews
         {
             var request = new ReviewsUpsertRequest()
             {
-                Approved = approveReviewCheckbox.Checked
+                Approved = approveReviewCheckbox.Checked,
+                QuoteToRemember = Review.QuoteToRemember,
+                Archived = Review.Archived,
+                Rating = Review.Rating,
+                Summary = Review.Summary,
+                UserBookId   = Review.UserBookId
             };
 
             var entity = await _reviewService.Update<Model.Models.Review>(_reviewId.Value, request);

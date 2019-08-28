@@ -17,6 +17,19 @@ namespace BookDiary.Desktop.Users
         {
             InitializeComponent();
             _userId = userId;
+
+            if(!Properties.Settings.Default.IsAdmin && Properties.Settings.Default.UserId != _userId)
+            {
+                firstNameTextBox.Enabled = false;
+                lastNameTextBox.Enabled = false;
+                emailTextBox.Enabled = false;
+                usernameTextBox.Enabled = false;
+                passwordTextBox.Enabled = false;
+                confirmPasswordTextBox.Enabled = false;
+                addUserBtn.Visible = false;
+                rolesCheckBoxList.Visible = false;
+                userDisabledCheckBox.Visible = false;
+            }
         }
 
         private async void UserDetailsForm_Load(object sender, System.EventArgs e)
@@ -33,23 +46,6 @@ namespace BookDiary.Desktop.Users
                 emailTextBox.Text = entity.Email;
                 usernameTextBox.Text = entity.Username;
                 userDisabledCheckBox.Checked = entity.Archived;
-
-                var searchRequest = new UserRolesSearchRequest()
-                {
-                    IsUsersLoadingEnabled = true,
-                    IsRolesLoadingEnabled = true,
-                    UserId = _userId.Value
-                };
-
-                //var userRoles = await _userRolesService.Get<List<Model.Models.UserRole>>(searchRequest);
-
-                //roles.ForEach((role) =>
-                //{
-                //    if (userRoles.Any(x => x.RoleId == role.Id))
-                //        rolesCheckBoxList.SetItemChecked(roles.IndexOf(role), true);
-                //    else
-                //        rolesCheckBoxList.SetItemChecked(roles.IndexOf(role), false);
-                //});
             }
         }
 

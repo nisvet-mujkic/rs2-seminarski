@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:converters="clr-namespace:BookDiary.Mobile.Converters"
+             x:Class="BookDiary.Mobile.Views.Review.ReviewPage"
+             Title="{Binding Book.Name}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imageConverter"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Padding="10" VerticalOptions="StartAndExpand">
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="{Binding Book.Name}" FontSize="22" />
+                <Label Text="by" FontSize="22" />
+                <Label Text="{Binding Book.Author.Name}" FontSize="22" />
+            </StackLayout>
+            
+            <Image WidthRequest="200" HeightRequest="200" Source="{Binding Book.CoverImage, Converter={StaticResource imageConverter}}"></Image>
+
+            <Label Text="{Binding Book.Genre.Name}" HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Tell others what do you think about this book:" HorizontalOptions="CenterAndExpand" />
+            <Editor Text="{Binding Review.Summary}" WidthRequest="400" AutoSize="TextChanges" HorizontalOptions="CenterAndExpand" ></Editor>
+
+            <Label Text="Which quote will you remember from this book:" HorizontalOptions="CenterAndExpand" />
+            <Editor WidthRequest="400" Text="{Binding Review.QuoteToRemember}" AutoSize="TextChanges" HorizontalOptions="CenterAndExpand"></Editor>
+
+            <Label Text="Please rate this book with a mark from 1 to 5" HorizontalOptions="CenterAndExpand" />
+            <Entry WidthRequest="400" Text="{Binding Review.Rating}" HorizontalOptions="CenterAndExpand"></Entry>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Save" WidthRequest="200" Clicked="Button_Clicked" BackgroundColor="LightGray"></Button>
+                <Button IsVisible="{Binding AllowRecommend}" Text="Recommend" BackgroundColor="LightGray" WidthRequest="200" Clicked="Button_Clicked_1"></Button>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

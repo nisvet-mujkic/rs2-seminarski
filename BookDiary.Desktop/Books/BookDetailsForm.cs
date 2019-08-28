@@ -29,6 +29,7 @@ namespace BookDiary.Desktop.Books
             {
                 var entity = await _bookService.GetById<Model.Models.Book>(_bookId);
                 bookTitleTextBox.Text = entity.Name;
+                subjectsTextBox.Text = entity.Subject;
                 totalPagesNumeric.Value = entity.PagesInTotal;
                 publishedInNumeric.Value = entity.YearPublished;
                 archivedCheckBox.Checked = entity.Archived;
@@ -107,7 +108,8 @@ namespace BookDiary.Desktop.Books
                 Name = bookTitleTextBox.Text,
                 PagesInTotal = (int)totalPagesNumeric.Value,
                 YearPublished = (int)publishedInNumeric.Value,
-                // add image
+                Subject = subjectsTextBox.Text.ToLower().Trim(),
+                CoverImage = request.CoverImage
             };
 
             var authorIdObj = bookAuthorComboBox.SelectedValue;
@@ -117,7 +119,7 @@ namespace BookDiary.Desktop.Books
                 searchRequest.AuthorId = authorId;
             }
 
-            var genreIdObj = bookAuthorComboBox.SelectedValue;
+            var genreIdObj = bookGenreComboBox.SelectedValue;
 
             if (int.TryParse(genreIdObj.ToString(), out int genreId))
             {
@@ -134,6 +136,19 @@ namespace BookDiary.Desktop.Books
             if (bookEntity != null)
             {
                 MessageBox.Show("Operation successfull");
+            }
+        }
+
+        private void SubjectsTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(subjectsTextBox.Text))
+            {
+                e.Cancel = true;
+                bookDetailsErrorProvider.SetError(subjectsTextBox, "You must enter at least one book subject");
+            }
+            else
+            {
+                bookDetailsErrorProvider.SetError(subjectsTextBox, null);
             }
         }
     }

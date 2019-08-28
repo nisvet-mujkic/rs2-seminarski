@@ -1,4 +1,5 @@
 ﻿using BookDiary.Infrastructure.Entities;
+using BookDiary.Infrastructure.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookDiary.Infrastructure.Data
@@ -8,6 +9,15 @@ namespace BookDiary.Infrastructure.Data
         public BookDiaryContext(DbContextOptions<BookDiaryContext> options): base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Query<MostActiveUsers>();
+            modelBuilder.Query<GenreComparison>();
+            modelBuilder.Query<MostPopularBook>();
         }
 
         public DbSet<Author> Authors { get; set; }
@@ -20,6 +30,5 @@ namespace BookDiary.Infrastructure.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserBook> UserBooks { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
-        public object Korisnici { get; set; }
     }
 }
