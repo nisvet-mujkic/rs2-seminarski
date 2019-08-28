@@ -35,6 +35,12 @@ namespace BookDiary.Desktop.Books
                 archivedCheckBox.Checked = entity.Archived;
                 bookGenreComboBox.SelectedValue = entity.GenreId;
                 bookAuthorComboBox.SelectedValue = entity.AuthorId;
+
+                var stream = new MemoryStream(entity.CoverImage);
+                Image image = Image.FromStream(stream);
+                bookPictureBox.Image = image;
+
+                request.CoverImage = entity.CoverImage;
             }
         }
 
