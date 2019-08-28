@@ -155,6 +155,5 @@ namespace BookDiary.API.Service
             byte[] inArray = algorithm.ComputeHash(dst);
             return Convert.ToBase64String(inArray);
         }
-
     }
 }

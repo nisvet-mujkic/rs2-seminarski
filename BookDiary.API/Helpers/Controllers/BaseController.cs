@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookDiary.API.Helpers.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<T, TSearch> : ControllerBase

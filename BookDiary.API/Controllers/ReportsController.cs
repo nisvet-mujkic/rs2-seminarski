@@ -1,13 +1,14 @@
 ﻿using BookDiary.API.IService;
 using BookDiary.Infrastructure.Results;
 using BookDiary.Model.Requests.Reports;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BookDiary.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class ReportsController : ControllerBase

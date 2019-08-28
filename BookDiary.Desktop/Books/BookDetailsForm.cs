@@ -138,5 +138,18 @@ namespace BookDiary.Desktop.Books
                 MessageBox.Show("Operation successfull");
             }
         }
+
+        private void SubjectsTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(subjectsTextBox.Text))
+            {
+                e.Cancel = true;
+                bookDetailsErrorProvider.SetError(subjectsTextBox, "You must enter at least one book subject");
+            }
+            else
+            {
+                bookDetailsErrorProvider.SetError(subjectsTextBox, null);
+            }
+        }
     }
 }

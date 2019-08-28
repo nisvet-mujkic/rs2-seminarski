@@ -30,7 +30,7 @@ namespace BookDiary.Mobile.ViewModels.Review
                 {
                     BookId = _bookId,
                     IsUserBookLoadingEnabled = true,
-                    ShowPendingReviews = true
+                    ShowApprovedReviews = true
                 };
 
                 var bookReviews = await _reviews.Get<List<Model.Models.Review>>(searchRequest);

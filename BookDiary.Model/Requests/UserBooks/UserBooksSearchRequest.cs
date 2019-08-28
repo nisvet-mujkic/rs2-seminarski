@@ -9,5 +9,6 @@ namespace BookDiary.Model.Requests.UserBooks
         public bool IsBooksLoadingEnabled { get; set; }
         public DateTime? StartedOn { get; set; }
         public DateTime? FinishedOn { get; set; }
+        public bool? FinishedWithReading { get; set; }
     }
 }

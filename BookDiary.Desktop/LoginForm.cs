@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BookDiary.Desktop
@@ -18,7 +19,10 @@ namespace BookDiary.Desktop
 
             try
             {
-                var user = await _usersService.Get<dynamic>(null);
+                var users = await _usersService.Get<List<Model.Models.User>>(null);
+
+                SetLoggedUser(users);
+
                 var mainForm = new MainForm();
                 mainForm.Show();
             }
@@ -26,6 +30,18 @@ namespace BookDiary.Desktop
             {
 
             }
+        }
+
+        private void SetLoggedUser(List<Model.Models.User> users)
+        {
+            users.ForEach(user =>
+            {
+                if (ApiService.Username == user.Username)
+                {
+                    Properties.Settings.Default.Username = ApiService.Username;
+                    Properties.Settings.Default.UserId = user.Id;
+                }
+            });
         }
     }
 }

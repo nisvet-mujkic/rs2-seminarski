@@ -4,39 +4,63 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="BookDiary.Mobile.Views.Review.BookReviewsPage"
-             Title="Find what others are saying about this book">
+             x:Class="BookDiary.Mobile.Views.History.HistoryPage"
+             xmlns:vm="clr-namespace:BookDiary.Mobile.ViewModels.History"
+             xmlns:converters="clr-namespace:BookDiary.Mobile.Converters"
+             Title="You have read following books">
+    <ContentPage.BindingContext>
+        <vm:HistoryViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imageConverter"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <ListView ItemsSource="{Binding Reviews}" SeparatorVisibility="Default"  SeparatorColor="LightGray">
+            <ListView  ItemsSource="{Binding PreviousReadings}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
+
+                                <StackLayout>
+                                    <Image WidthRequest="60" HeightRequest="60" Source="{Binding Book.CoverImage, Converter={StaticResource imageConverter}}"></Image>
+                                </StackLayout>
+
                                 <StackLayout Orientation="Vertical">
+
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding UserBook.User.Username}" 
+                                        <Label Text="{Binding Book.Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                        <Label Text="rated this book with a rating " 
+                                        <Label Text="by" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                        <Label Text="{Binding Rating}" 
+                                        <Label Text="{Binding Book.Author.Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Summary}" 
+
+                                        <Label Text="You have finished reading this book on" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="13" />
+
+                                        <Label Text="{Binding FinishedReadingOn, StringFormat='{0:dd MMMM yyyy}'}" 
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemDetailTextStyle}"
                                            FontSize="13" />
                                     </StackLayout>
+
+
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

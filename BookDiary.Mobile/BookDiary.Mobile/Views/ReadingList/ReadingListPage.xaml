@@ -4,8 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:vm="clr-namespace:BookDiary.Mobile.ViewModels.ReadingList"
              x:Class="BookDiary.Mobile.Views.ReadingList.ReadingListPage"
+             xmlns:vm="clr-namespace:BookDiary.Mobile.ViewModels.ReadingList"
              xmlns:converters="clr-namespace:BookDiary.Mobile.Converters"
              Title="My Reading List">
 
@@ -19,7 +19,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <ListView ItemsSource="{Binding CurrentlyReading}" ItemSelected="ListView_ItemSelected" >
+            <ListView  ItemsSource="{Binding CurrentlyReading}" ItemSelected="ListView_ItemSelected" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -30,15 +30,38 @@
                                 </StackLayout>
 
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Book.Name}" 
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Book.Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                    <Label Text="{Binding StartedReadingOn}" 
+                                        <Label Text="by" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+
+                                        <Label Text="{Binding Book.Author.Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <Label Text="You have started reading this book on" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="13" />
+
+                                        <Label Text="{Binding StartedReadingOn, StringFormat='{0:dd MMMM yyyy}'}" 
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemDetailTextStyle}"
                                            FontSize="13" />
+                                    </StackLayout>
+                                    
+                                   
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

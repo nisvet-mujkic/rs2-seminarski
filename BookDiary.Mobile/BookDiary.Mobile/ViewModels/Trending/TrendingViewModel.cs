@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -25,7 +24,11 @@ namespace BookDiary.Mobile.ViewModels.Trending
         {
             try
             {
-                var recommendedBooks = await _recommendationService.GetById<List<Model.Models.Book>>(1);
+                object currentUserId = 0;
+
+                Application.Current.Properties.TryGetValue("id", out currentUserId);
+                
+                var recommendedBooks = await _recommendationService.GetById<List<Model.Models.Book>>(currentUserId);
 
                 RecommendedBooks.Clear();
                 recommendedBooks.ForEach(book => RecommendedBooks.Add(book));

@@ -41,10 +41,12 @@ namespace BookDiary.Mobile.ViewModels.Quote
 
                 var quotesEntities = await _quotesService.Get<List<Model.Models.Quote>>(searchRequest);
 
-                var rand = new Random();
-                int toSkip = rand.Next(1, quotesEntities.Count);
+                var approvedQuotes = quotesEntities.Where(x => !x.Archived);
 
-                Quote = quotesEntities.OrderBy(x => Guid.NewGuid()).Skip(toSkip).Take(1).FirstOrDefault();
+                var rand = new Random();
+                int toSkip = rand.Next(1, approvedQuotes.Count());
+
+                Quote = approvedQuotes.OrderBy(x => Guid.NewGuid()).Skip(toSkip).Take(1).FirstOrDefault();
             }
             catch (System.Exception)
             {

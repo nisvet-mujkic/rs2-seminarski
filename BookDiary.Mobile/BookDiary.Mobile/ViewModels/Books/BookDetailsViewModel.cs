@@ -3,6 +3,7 @@ using BookDiary.Model.Requests.UserBooks;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace BookDiary.Mobile.ViewModels.Books
@@ -25,12 +26,16 @@ namespace BookDiary.Mobile.ViewModels.Books
         {
             try
             {
+                object currentUserId = 0;
+
+                Application.Current.Properties.TryGetValue("id", out currentUserId);
+
                 var request = new UserBooksUpsertRequest()
                 {
                     BookId = Book.Id,
                     FinishedReadingOn = null,
                     StartedReadingOn = DateTime.Now,
-                    UserId = 1
+                    UserId = (int)currentUserId
                 };
 
                 var userBookEntity = await _userBooksService.Insert<Model.Models.UserBook>(request);
@@ -45,7 +50,7 @@ namespace BookDiary.Mobile.ViewModels.Books
                     await Application.Current.MainPage.DisplayAlert("Error", "Something happened", "OK");
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
 
                 throw;

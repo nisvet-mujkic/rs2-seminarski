@@ -203,7 +203,7 @@
             this.totalPagesNumeric.Size = new System.Drawing.Size(102, 22);
             this.totalPagesNumeric.TabIndex = 16;
             this.totalPagesNumeric.Value = new decimal(new int[] {
-            1,
+            100,
             0,
             0,
             0});
@@ -236,6 +236,7 @@
             this.subjectsTextBox.Name = "subjectsTextBox";
             this.subjectsTextBox.Size = new System.Drawing.Size(228, 22);
             this.subjectsTextBox.TabIndex = 18;
+            this.subjectsTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SubjectsTextBox_Validating);
             // 
             // label2
             // 

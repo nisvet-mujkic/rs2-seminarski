@@ -124,5 +124,39 @@ namespace BookDiary.Desktop.Users
                 this.Close();
             }
         }
+
+        private void PasswordTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(passwordTextBox.Text))
+            {
+                e.Cancel = true;
+                userDetailsErrorProvider.SetError(passwordTextBox, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                userDetailsErrorProvider.SetError(passwordTextBox, null);
+            }
+        }
+
+        private void ConfirmPasswordTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(confirmPasswordTextBox.Text))
+            {
+                e.Cancel = true;
+                userDetailsErrorProvider.SetError(confirmPasswordTextBox, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                if(passwordTextBox.Text != confirmPasswordTextBox.Text)
+                {
+                    e.Cancel = true;
+                    userDetailsErrorProvider.SetError(confirmPasswordTextBox, "Passwords do not match");
+                }
+                else
+                {
+                    userDetailsErrorProvider.SetError(confirmPasswordTextBox, null);
+                }
+            }
+        }
     }
 }

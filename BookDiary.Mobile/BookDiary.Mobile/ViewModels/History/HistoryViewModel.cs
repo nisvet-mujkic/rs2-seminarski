@@ -3,24 +3,22 @@ using BookDiary.Model.Requests.UserBooks;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace BookDiary.Mobile.ViewModels.ReadingList
+namespace BookDiary.Mobile.ViewModels.History
 {
-    public class ReadingListViewModel : BaseViewModel
+    public class HistoryViewModel: BaseViewModel
     {
         private ApiService _readingListService = new ApiService("UserBooks");
-        
-        public ReadingListViewModel()
+
+        public HistoryViewModel()
         {
             InitCommand = new Command(async () => await Init());
         }
 
-        public ObservableCollection<Model.Models.UserBook> CurrentlyReading { get; set; } = new ObservableCollection<Model.Models.UserBook>();
+        public ObservableCollection<Model.Models.UserBook> PreviousReadings { get; set; } = new ObservableCollection<Model.Models.UserBook>();
 
         public ICommand InitCommand { get; set; }
 
@@ -35,21 +33,19 @@ namespace BookDiary.Mobile.ViewModels.ReadingList
                 var searchRequest = new UserBooksSearchRequest()
                 {
                     UserId = (int)currentUserId,
-                    FinishedOn = null,
+                    FinishedOn = DateTime.Now,
                     IsBooksLoadingEnabled = true,
-                    IsUsersLoadingEnabled = true,
-                    FinishedWithReading = false
+                    IsUsersLoadingEnabled = true
                 };
 
                 var entities = await _readingListService.Get<List<Model.Models.UserBook>>(searchRequest);
 
-                CurrentlyReading.Clear();
-                entities.ForEach((entity) => CurrentlyReading.Add(entity));
+                PreviousReadings.Clear();
+                entities.ForEach((entity) => PreviousReadings.Add(entity));
             }
             catch (System.Exception)
             {
 
-                throw;
             }
         }
     }

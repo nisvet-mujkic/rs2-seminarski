@@ -3,12 +3,7 @@ using BookDiary.Infrastructure.Results;
 using BookDiary.Model.Requests.Reports;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookDiary.Desktop.Reports.Books
@@ -19,6 +14,7 @@ namespace BookDiary.Desktop.Reports.Books
         public MostPopularBooksFilter()
         {
             InitializeComponent();
+            fromDtp.Value = fromDtp.Value.AddYears(-1);
         }
 
         private async void ShowReportBtn_Click(object sender, EventArgs e)
@@ -28,7 +24,6 @@ namespace BookDiary.Desktop.Reports.Books
                 From = fromDtp.Value,
                 To = toDtp.Value
             };
-
 
             var results = await _userReports.Get<List<MostActiveUsers>>(searchRequest);
 

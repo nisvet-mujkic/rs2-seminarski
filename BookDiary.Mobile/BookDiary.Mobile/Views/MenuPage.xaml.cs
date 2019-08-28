@@ -20,7 +20,8 @@ namespace BookDiary.Mobile.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Books, Title="Books" },
                 new HomeMenuItem {Id = MenuItemType.CurrentlyReading, Title="My Reading List" },
-                new HomeMenuItem {Id = MenuItemType.Trending, Title="Trending" },
+                new HomeMenuItem {Id = MenuItemType.History, Title="My History" },
+                new HomeMenuItem {Id = MenuItemType.Trending, Title="Trending" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

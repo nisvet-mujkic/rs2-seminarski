@@ -36,6 +36,10 @@
             this.Archived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.openQuoteFormBtn = new System.Windows.Forms.Button();
             this.showQuotesBtn = new System.Windows.Forms.Button();
+            this.booksComboBox = new System.Windows.Forms.ComboBox();
+            this.authorsComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.quotesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +114,7 @@
             // 
             // showQuotesBtn
             // 
-            this.showQuotesBtn.Location = new System.Drawing.Point(30, 32);
+            this.showQuotesBtn.Location = new System.Drawing.Point(482, 32);
             this.showQuotesBtn.Name = "showQuotesBtn";
             this.showQuotesBtn.Size = new System.Drawing.Size(112, 35);
             this.showQuotesBtn.TabIndex = 2;
@@ -118,11 +122,49 @@
             this.showQuotesBtn.UseVisualStyleBackColor = true;
             this.showQuotesBtn.Click += new System.EventHandler(this.ShowQuotesBtn_Click);
             // 
+            // booksComboBox
+            // 
+            this.booksComboBox.FormattingEnabled = true;
+            this.booksComboBox.Location = new System.Drawing.Point(30, 38);
+            this.booksComboBox.Name = "booksComboBox";
+            this.booksComboBox.Size = new System.Drawing.Size(181, 24);
+            this.booksComboBox.TabIndex = 3;
+            // 
+            // authorsComboBox
+            // 
+            this.authorsComboBox.FormattingEnabled = true;
+            this.authorsComboBox.Location = new System.Drawing.Point(256, 38);
+            this.authorsComboBox.Name = "authorsComboBox";
+            this.authorsComboBox.Size = new System.Drawing.Size(178, 24);
+            this.authorsComboBox.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Book";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(253, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Author";
+            // 
             // QuotesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 539);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.authorsComboBox);
+            this.Controls.Add(this.booksComboBox);
             this.Controls.Add(this.showQuotesBtn);
             this.Controls.Add(this.openQuoteFormBtn);
             this.Controls.Add(this.quotesDataGrid);
@@ -131,6 +173,7 @@
             this.Load += new System.EventHandler(this.QuotesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.quotesDataGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,5 +187,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QuoteText;
         private System.Windows.Forms.DataGridViewTextBoxColumn BookId;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Archived;
+        private System.Windows.Forms.ComboBox booksComboBox;
+        private System.Windows.Forms.ComboBox authorsComboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

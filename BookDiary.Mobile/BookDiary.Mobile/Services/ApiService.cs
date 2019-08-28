@@ -39,8 +39,8 @@ namespace BookDiary.Mobile.Services
                     url += await search.ToQueryString();
                 }
 
-                //return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
-                return await url.GetJsonAsync<T>();
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+                //return await url.GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)
             {
@@ -65,9 +65,7 @@ namespace BookDiary.Mobile.Services
 
             try
             {
-                //return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
-                return await url.PostJsonAsync(request).ReceiveJson<T>();
-
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {

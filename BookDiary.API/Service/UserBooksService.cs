@@ -23,7 +23,13 @@ namespace BookDiary.API.Service
                 query = query.Include(x => x.User);
 
             if (search.IsBooksLoadingEnabled == true)
-                query = query.Include(x => x.Book);
+                query = query.Include(x => x.Book).ThenInclude(x => x.Author);
+
+            if (search.FinishedOn.HasValue)
+                query = query.Where(x => x.FinishedReadingOn <= search.FinishedOn.Value);
+
+            if (search.FinishedWithReading.HasValue && !search.FinishedWithReading.HasValue)
+                query = query.Where(x => x.FinishedReadingOn == null);
 
             query = query.Where(x => x.UserId == search.UserId && !x.Archived);
 
